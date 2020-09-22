@@ -1,3 +1,3 @@
-# desktop
+# linux-environment
 
-Project to configure a Linux desktop environment based on Fedora Workstation.
+Project to configure a Linux environment based on Fedora for development and general use.
