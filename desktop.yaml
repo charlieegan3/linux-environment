@@ -4,11 +4,18 @@
   vars:
     username: charlieegan3
   tasks:
-  - name: "touch a file"
-    shell: "touch /home/{{ username }}/test"
-    args:
-      creates: "/home/{{ username }}/test"
-  - name: copy example
-    copy:
-      src: test2
-      dest: /home/{{ username }}/test2
+  - name: Check pschyska:alacritty.repo enabled
+    command: cat /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:pschyska:alacritty.repo
+    register: copr_pschyska_alacritty
+    changed_when: false
+  - name: Enable Fedora Copr for Alacritty if needed
+    command: dnf copr enable pschyska/alacritty
+    when: ('enabled=1' not in copr_pschyska_alacritty.stdout)
+
+  - name: install packages
+    dnf:
+      name:
+      - sway-1.4-6
+      - chromium-85.0.4183.83-1
+      state: latest
+    become: yes
