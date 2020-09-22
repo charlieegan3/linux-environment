@@ -1,0 +1,5 @@
+---
+roles:
+- name: edmondscommerce.copr-repository
+  version: 0f9793c
+

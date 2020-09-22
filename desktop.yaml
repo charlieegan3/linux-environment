@@ -3,19 +3,21 @@
   hosts: "*"
   vars:
     username: charlieegan3
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
-  - name: Check pschyska:alacritty.repo enabled
-    command: cat /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:pschyska:alacritty.repo
-    register: copr_pschyska_alacritty
-    changed_when: false
-  - name: Enable Fedora Copr for Alacritty if needed
-    command: dnf copr enable pschyska/alacritty
-    when: ('enabled=1' not in copr_pschyska_alacritty.stdout)
+  - name: run ansible galaxy
+    local_action: command ansible-galaxy install -r requirements.yaml 
+
+  - name: "pschyska/alacritty"
+    include_role:
+      name: edmondscommerce.copr-repository
+    vars:
+      copr_repository: pschyska/alacritty
 
   - name: install packages
     dnf:
       name:
-      - sway-1.4-6
-      - chromium-85.0.4183.83-1
+      - sway-1.4
+      - chromium
       state: latest
     become: yes
