@@ -1,0 +1,14 @@
+---
+- name: "Desktop"
+  hosts: "*"
+  vars:
+    username: charlieegan3
+  tasks:
+  - name: "touch a file"
+    shell: "touch /home/{{ username }}/test"
+    args:
+      creates: "/home/{{ username }}/test"
+  - name: copy example
+    copy:
+      src: test2
+      dest: /home/{{ username }}/test2
