@@ -1,3 +1,4 @@
+SHELL:=$(shell echo $$(which bash)) # bash syntax is used in packer target
 GITHUB_SHA ?= $(shell git rev-parse --short HEAD)
 PACKER_STATUS_FILE:=.packer_success
 
