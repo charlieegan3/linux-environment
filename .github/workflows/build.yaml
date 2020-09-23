@@ -1,16 +1,16 @@
-name: Test
+name: CI
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  images:
+  suites:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Packer test playbook
+    - name: Packer playbook
       env:
         HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
       run: |
