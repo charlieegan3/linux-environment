@@ -16,6 +16,13 @@
     with_items:
     - pschyska/alacritty
     - sentry/v4l2loopback 
+      
+  - name: install rawhide repo
+    dnf:
+      name:
+      - fedora-repos-rawhide # needed for gammastep
+      state: latest
+    become: yes
 
   - name: install packages
     dnf:
