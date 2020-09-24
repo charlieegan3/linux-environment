@@ -14,12 +14,12 @@
 - name: install wf-recorder fork from source
   shell: |
     dir=$(mktemp -d); cd $dir
-    git clone https://github.com/schauveau/wf-recorder-x .
+    git clone https://github.com/happysmash27/wf-recorder .
     git checkout 242fe219cc91ccc4aa54f886592b19be26c84856
     meson build --prefix=/usr --buildtype=release
     ninja -C build
     mkdir -p /home/{{ username }}/.local/bin/
-    mv ./build/wf-recorder-x /home/{{ username }}/.local/bin/wf-recorder
+    mv ./build/wf-recorder /home/{{ username }}/.local/bin/wf-recorder
   args:
     creates: /home/{{ username }}/.local/bin/wf-recorder
 

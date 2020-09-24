@@ -1,3 +1,9 @@
+- name: get kernel version
+  shell: uname -r | cut -d- -f1
+  args:
+    warn: false
+  register: kernel_version
+
 - name: install packages
   dnf:
     name:
@@ -5,7 +11,6 @@
     - vim-enhanced-8.2.1551
     - automake-1.16.1 
     - chromium
-    - gammastep-2.0.2 # flux
     - gcc-10.0.1
     - htop-2.2.0
     - lshw-B.02.19.2
@@ -13,10 +18,12 @@
     - mako-1.4.1 # notification
     - sway-1.4
     - ulauncher-5.8.0
-    - kernel-devel-5.8.9-200 # needed for v4l2loopback
+    - kernel-headers-{{ kernel_version.stdout }} # needed for v4l2loopback
+    - kernel-devel-{{ kernel_version.stdout }} # needed for v4l2loopback
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
     - vlc-1:3.0.11.1
+    - ffmpeg-4.2.4
     - waybar-0.9.3
     state: latest
   become: yes
