@@ -1,0 +1,33 @@
+- name: run ansible galaxy
+  local_action: command ansible-galaxy install -r requirements.yaml 
+
+- name: install copr repos
+  include_role:
+    name: edmondscommerce.copr-repository
+  vars:
+    copr_repository: "{{ item }}"
+  with_items:
+  - pschyska/alacritty
+  - sentry/v4l2loopback
+
+- name: get fedora version
+  shell: rpm -E %fedora
+  args:
+    warn: false
+  register: fedora_version
+
+- name: install rpm fusion repo
+  dnf:
+    name:
+    - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ fedora_version.stdout }}.noarch.rpm
+    - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version.stdout }}.noarch.rpm
+    state: latest
+    disable_gpg_check: yes # seems to have been signed with the wrong keys for v31?
+  become: yes
+    
+- name: install rawhide repo
+  dnf:
+    name:
+    - fedora-repos-rawhide # needed for gammastep
+    state: latest
+  become: yes

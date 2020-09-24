@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+set -e
+
+# find the name of the video device from the module
+device="$(v4l2-ctl --list-devices | grep WfRecorder -A 1 | tail -n 1 | tr -d [:space:])"
+if [[ $device == "" ]]; then
+        notify-send -t 2000 "virtual camera is missing"
+        >&2 echo "missing camera"
+        exit 1
+fi
+
+# kill existing streamers
+if [[ "$(pgrep wf-recorder)" != "" ]]; then
+        pgrep wf-recorder | xargs -n 1 --no-run-if-empty kill -SIGINT
+fi
+
+# find users of the device
+users="$(fuser /dev/video4 2>/dev/null | awk '{for (i=1; i<=NF; i++) print $i}' | xargs -n 1 -I {} ps -p {} -o comm= | paste -s -d",")"
+if [[ "$users" != "" ]]; then
+        notify-send -t 3000 "can't record: $users using camera"
+        >&2 echo "camera in use"
+        exit 1
+fi
+
+
+# check if we have still failed to stop the use of the old device
+format="$(cat /sys/devices/virtual/video4linux/video4/format)"
+if [[ $format != "" ]]; then
+        notify-send -t 2000 "virtual camera busy"
+        >&2 echo "busy"
+        exit 1
+fi
+
+# set the default format
+width=$(swaymsg -t get_outputs --raw | jq .[0].rect.width)
+height=$(swaymsg -t get_outputs --raw | jq .[0].rect.height)
+x=0
+y=0
+
+# use slurp to set the format if showing an area
+if [[ "$1" == "slurp" ]]; then
+        data="$(slurp -f '{ "height": %h, "width": %w, "x": %x, "y": %y }')"
+        width="$(echo $data | jq .width)"
+        height="$(echo $data | jq .height)"
+        x="$(echo $data | jq .x)"
+        y="$(echo $data | jq .y)"
+        echo $data
+        notify-send -t 2000 "Recording Selection"
+else
+        notify-send -t 2000 "Recording Screen"
+fi
+
+# TODO reduce framerate https://github.com/ammen99/wf-recorder/pull/102
+wf-recorder \
+        -x yuv420p \
+        -g "$x,$y ${width}x$height" \
+        --muxer=v4l2 \
+        --codec=rawvideo \
+        --file="$device"

@@ -1,0 +1,38 @@
+- name: install build requirements for wf-recorder
+  dnf:
+    name:
+    - ninja-build-1.10.1
+    - meson-0.55.3
+    - gcc-c++-10.0.1
+    - wayland-devel-1.18.0
+    - wayland-protocols-devel-1.20
+    - ffmpeg-devel-4.2.4
+    - pulseaudio-libs-devel-13.99.1
+    state: latest
+  become: yes
+
+- name: install wf-recorder fork from source
+  shell: |
+    dir=$(mktemp -d); cd $dir
+    git clone https://github.com/schauveau/wf-recorder-x .
+    git checkout 242fe219cc91ccc4aa54f886592b19be26c84856
+    meson build --prefix=/usr --buildtype=release
+    ninja -C build
+    mkdir -p /home/{{ username }}/.local/bin/
+    mv ./build/wf-recorder-x /home/{{ username }}/.local/bin/wf-recorder
+  args:
+    creates: /home/{{ username }}/.local/bin/wf-recorder
+
+- name: enable kernel module
+  lineinfile:
+    path: /etc/modules-load.d/v4l2loopback.conf
+    regexp: '^v4l2loopback$'
+    line: v4l2loopback
+    create: true
+
+- name: start kernel module at login 
+  lineinfile:
+    path: /etc/modprobe.d/v4l2loopback.conf
+    regexp: 'v4l2loopback'
+    line: options v4l2loopback exclusive_caps=1 card_label=WfRecorder
+    create: true

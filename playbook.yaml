@@ -5,54 +5,11 @@
     username: charlieegan3
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-  - name: run ansible galaxy
-    local_action: command ansible-galaxy install -r requirements.yaml 
-
-  - name: "Enable copr repos"
-    include_role:
-      name: edmondscommerce.copr-repository
-    vars:
-      copr_repository: pschyska/alacritty
-    with_items:
-    - pschyska/alacritty
-    - sentry/v4l2loopback 
-      
-  - name: install rawhide repo
-    dnf:
-      name:
-      - fedora-repos-rawhide # needed for gammastep
-      state: latest
-    become: yes
-  - name: install gammastep
-    command: dnf --disablerepo=* --enablerepo=rawhide --releasever=34 install -y gammastep-2.0.2
-    args:
-      warn: no
-    become: yes
-
+  - name: repositories
+    import_tasks: tasks/repositories.yaml
   - name: install packages
-    dnf:
-      name:
-      - alacritty-0.5.0 # terminal emulator
-      - automake-1.16.1 
-      - chromium
-      - gammastep-2.0.2 # flux
-      - gcc-10.0.1
-      - htop-2.2.0
-        # - kernel-devel-5.8.9-200 # needed for v4l2loopback
-      - lshw-B.02.19.2
-      - make-1:4.2.1
-      - mako-1.4.1 # notification
-      - sway-1.4
-      - ulauncher-5.8.0
-        # - v4l2loopback-0.12.5 # screen recorder plugin
-        # - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
-        # - vlc-1:3.0.11.1
-      - waybar-0.9.3
-        # - wf-recorder-0.2.1 # screen recorder
-      state: latest
-    become: yes
-
-  - name: Install home dir
-    copy:
-      src: HOME/
-      dest: /home/{{ username }}/
+    import_tasks: tasks/packages.yaml
+  - name: wf-recorder
+    import_tasks: tasks/wf-recorder.yaml
+  - name: home-dir
+    import_tasks: tasks/home-dir.yaml

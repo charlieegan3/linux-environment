@@ -1,0 +1,7 @@
+- name: install home dir
+  copy:
+    src: HOME/
+    dest: /home/{{ username }}/
+    owner: "{{ username }}"
+- name: set record screen permissions
+  file: dest=/home/{{ username }}/.local/bin/record-screen mode=a+x
