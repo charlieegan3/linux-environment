@@ -1,3 +1,6 @@
+- name: create user account
+  user:
+    name: "{{ username }}"
 - name: install home dir
   copy:
     src: HOME/

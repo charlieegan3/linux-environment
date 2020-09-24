@@ -5,11 +5,11 @@
     username: charlieegan3
     ansible_python_interpreter: /usr/bin/python3
   tasks:
+  - name: home-dir
+    import_tasks: tasks/home-dir.yaml
   - name: repositories
     import_tasks: tasks/repositories.yaml
   - name: install packages
     import_tasks: tasks/packages.yaml
   - name: wf-recorder
     import_tasks: tasks/wf-recorder.yaml
-  - name: home-dir
-    import_tasks: tasks/home-dir.yaml
