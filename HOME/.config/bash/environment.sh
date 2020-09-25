@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # these come first since they are used in the setting of the path
-export GOROOT="/usr/local/go"
+export GOROOT="/usr/lib/golang/"
 export GOPATH="$HOME/Code/go"
 
 export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin"
