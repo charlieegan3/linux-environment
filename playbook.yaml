@@ -10,6 +10,8 @@
   tasks:
   - name: home-dir
     import_tasks: tasks/home-dir.yaml
+  - name: misc admin tasks
+    import_tasks: tasks/misc.yaml
   - name: repositories
     import_tasks: tasks/repositories.yaml
   - name: install packages

@@ -1,0 +1,6 @@
+- name: set sudo timeout
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '^timestamp_timeout'
+    line: 'Defaults timestamp_timeout=15'
+  become: yes

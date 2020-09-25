@@ -9,7 +9,7 @@
     name:
     - alacritty-0.5.0 # terminal emulator
     - vim-enhanced-8.2.1551
-    - automake-1.16.1 
+    - automake-1.16.1
     - chromium
     - gcc-10.0.1
     - htop-2.2.0
