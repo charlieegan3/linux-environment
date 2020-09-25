@@ -4,6 +4,9 @@
   vars:
     username: charlieegan3
     ansible_python_interpreter: /usr/bin/python3
+    GOROOT: /usr/lib/golang/
+    GOPATH: /home/charlieegan3/Code/go
+    GO111MODULE: "on"
   tasks:
   - name: home-dir
     import_tasks: tasks/home-dir.yaml
@@ -15,3 +18,5 @@
     import_tasks: tasks/flatpaks.yaml
   - name: wf-recorder
     import_tasks: tasks/wf-recorder.yaml
+  - name: tools
+    import_tasks: tasks/tools.yaml

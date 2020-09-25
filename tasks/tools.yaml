@@ -1,0 +1,90 @@
+- name: install hcloud
+  shell: "{{ GOROOT }}/bin/go get -u github.com/hetznercloud/cli/cmd/hcloud"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/hcloud"
+  become_user: "{{ username }}"
+
+- name: install jb
+  shell: "{{ GOROOT }}/bin/go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/jb"
+  become_user: "{{ username }}"
+
+- name: install gojsontoyaml
+  shell: "{{ GOROOT }}/bin/go get -u github.com/brancz/gojsontoyaml"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/gojsontoyaml"
+  become_user: "{{ username }}"
+
+- name: install tfenv
+  shell: |
+    USERNAME={{ username }}
+    git clone https://github.com/tfutils/tfenv.git /home/$USERNAME/.tfenv
+    ln -s /home/$USERNAME/.tfenv/bin/* /home/$USERNAME/.local/bin/
+    /home/$USERNAME/.tfenv/bin/tfenv install # installs latest
+    /home/$USERNAME/.tfenv/bin/tfenv use latest
+  args:
+    creates: /home/{{ username }}/.local/bin/tfenv
+
+- name: install packer
+  shell: |
+    curl -LO https://releases.hashicorp.com/packer/1.5.5/packer_1.5.5_linux_amd64.zip && \
+    unzip *.zip && \
+    sudo mv packer /home/{{ username }}/.local/bin/ && \
+    rm *.zip
+  args:
+    creates: /home/{{ username }}/.local/bin/packer
+    warn: false
+
+- name: install packer
+  shell: |
+    curl -LO https://releases.hashicorp.com/vault/1.4.0/vault_1.4.0_linux_amd64.zip
+    unzip vault*.zip
+    mv vault /home/{{ username }}/.local/bin/vault
+    rm vault*.zip
+  args:
+    creates: /home/{{ username }}/.local/bin/vault
+    warn: false
+
+- name: install kubectl, kubens, kubectx
+  shell: |
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+    chmod +x ./kubectl
+    sudo mv ./kubectl /home/{{ username }}/.local/bin/kubectl
+    curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
+    curl -LO https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
+    chmod +x kubectx kubens
+    mv kubectx kubens /home/{{ username }}/.local/bin/
+  args:
+    creates: /home/{{ username }}/.local/bin/kubectl
+    warn: false
+
+- name: install gcloud
+  shell: |
+    tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
+    [google-cloud-sdk]
+    name=Google Cloud SDK
+    baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64
+    enabled=1
+    gpgcheck=1
+    repo_gpgcheck=1
+    gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+           https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    EOM
+
+    dnf install -y google-cloud-sdk
+  args:
+    creates: /usr/bin/gcloud
+  become: true
