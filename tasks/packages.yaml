@@ -33,6 +33,7 @@
     - direnv-2.21.2
     - fzf-0.22.0
     - ruby-2.7.1
+    - golang-1.14.9
     state: latest
   become: yes
 
