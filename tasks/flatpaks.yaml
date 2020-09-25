@@ -1,0 +1,4 @@
+- name: install spotify
+  community.general.flatpak:
+    name: https://dl.flathub.org/repo/appstream/com.spotify.Client.flatpakref
+    state: present

@@ -4,6 +4,8 @@ PACKER_STATUS_FILE:=.packer_success
 
 # provision the machine
 playbook:
+	ansible-galaxy install -r requirements.yaml 
+	ansible-galaxy collection install -r requirements.yaml
 	# -c makes the connection local
 	# -i sets list of hosts to use
 	ansible-playbook -c local -i hosts playbook.yaml
