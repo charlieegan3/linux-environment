@@ -1,0 +1,38 @@
+[user]
+  name = Charlie Egan
+  email = charlieegan3@users.noreply.github.com
+[core]
+  editor = vim
+  excludesfile = ~/.git_config/.global-gitignore
+  filemode = false
+[transfer]
+  fsckobjects = true
+[push]
+  default = simple
+[color]
+  ui = auto
+[color "status"]
+  added = green
+  changed = blue bold
+  untracked = red bold
+[commit]
+  template = ~/.git_config/gitmessage
+[status]
+  showUntrackedFiles = all
+[stash]
+  showPatch = true
+[rebase]
+  autostash = true
+[log]
+  decorate = full
+[alias]
+  s = status -sb
+  c = diff --cached --word-diff=color
+  lg = log --pretty=format:'%Cred%h%Creset %Cblue%an %Creset(%Cgreen%ar%Creset) \t%<(55,trunc)%s' --max-count=40
+  cm = log -1 --pretty=%B
+  stash-all = stash save --include-untracked
+  b = branch --sort=-committerdate
+[fetch]
+  fsckobjects = false
+[credential]
+  helper = store
