@@ -32,6 +32,7 @@
     - tmux-3.0a
     - direnv-2.21.2
     - fzf-0.22.0
+    - ruby-2.7.1
     state: latest
   become: yes
 

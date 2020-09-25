@@ -28,3 +28,7 @@ install_packer:
 	  unzip *.zip && \
 	  sudo mv packer /usr/local/bin/packer; \
 	fi
+
+.PHONY: import_home_dir_files
+import_home_dir_files:
+	./hack/import_home_dir_files.rb
