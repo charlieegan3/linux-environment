@@ -13,7 +13,7 @@
       "token": "{{ user `hetzner_token` }}",
       "image": "fedora-32",
       "location": "nbg1",
-      "server_type": "ccx21",
+      "server_type": "cpx21",
       "ssh_username": "root"
     }
   ],
