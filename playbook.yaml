@@ -18,5 +18,9 @@
     import_tasks: tasks/flatpaks.yaml
   - name: wf-recorder
     import_tasks: tasks/wf-recorder.yaml
+  # needs: golang
   - name: tools
+    import_tasks: tasks/tools.yaml
+  # needs: golang, home .config
+  - name: vim
     import_tasks: tasks/tools.yaml

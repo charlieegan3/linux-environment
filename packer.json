@@ -20,7 +20,9 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": ["mkdir -p /build"]
+      "inline": [
+        "mkdir -p /build"
+      ]
     },
     {
       "type": "file",

@@ -3,6 +3,7 @@
 alias ls='ls --color=always --file-type'
 alias pbcopy='wl-copy'
 alias pbpaste='wl-paste'
+alias vi='nvim'
 
 jj() {
   cd $(j -l | awk '{ print $2 }' | fzf)

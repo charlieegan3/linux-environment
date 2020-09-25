@@ -1,0 +1,25 @@
+- name: nvim
+  dnf:
+    name:
+    - neovim-0.4.4
+    - python3-neovim-0.4.1
+    state: latest
+  become: yes
+
+- name: install vim-plug
+  shell: |
+    sh -c 'curl -fLo /home/{{ username }}/.local/share}/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  args:
+    creates: /home/{{ username }}/.local/share}/nvim/site/autoload/plug.vim
+
+- name: install plugins
+  shell: |
+    nvim +PlugInstall +qall
+    nvim +UpdateRemotePlugins +qall
+    nvim main.go +GoInstallBinaries +qall
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  become_user: "{{ username }}"

@@ -8,6 +8,16 @@
     creates: "{{ GOPATH }}/bin/hcloud"
   become_user: "{{ username }}"
 
+- name: install gocode
+  shell: "{{ GOROOT }}/bin/go get -u github.com/visualfc/gocode"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/gocode"
+  become_user: "{{ username }}"
+
 - name: install jb
   shell: "{{ GOROOT }}/bin/go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb"
   environment:
