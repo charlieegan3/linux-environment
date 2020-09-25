@@ -51,6 +51,6 @@
 - name: remove packages
   dnf:
     name:
-    - vim-minimal
+    # - vim-minimal
     state: absent
   become: yes
