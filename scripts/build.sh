@@ -2,12 +2,12 @@
 
 set -euo pipefail
 
-set -exo pipefail
-
 cd /build
 
 # install deps to run make
-dnf install --assumeyes make git ansible
+dnf install --assumeyes make unzip git ansible
+
+unzip head.zip
 
 # make the image and push it
 make playbook

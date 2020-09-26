@@ -3,7 +3,7 @@
   email = charlieegan3@users.noreply.github.com
 [core]
   editor = vim
-  excludesfile = ~/.git_config/.global-gitignore
+  excludesfile = ~/.config/git/global-gitignore
   filemode = false
 [transfer]
   fsckobjects = true
@@ -16,7 +16,7 @@
   changed = blue bold
   untracked = red bold
 [commit]
-  template = ~/.git_config/gitmessage
+  template = ~/.config/git/gitmessage
 [status]
   showUntrackedFiles = all
 [stash]

@@ -19,6 +19,10 @@
   ],
   "provisioners": [
     {
+      "type": "shell-local",
+      "command": "bash -c 'rm head.zip; zip -r head.zip .'"
+    },
+    {
       "type": "shell",
       "inline": [
         "mkdir -p /build"
@@ -26,8 +30,8 @@
     },
     {
       "type": "file",
-      "source": "./",
-      "destination": "/build"
+      "source": "./head.zip",
+      "destination": "/build/"
     },
     {
       "type": "shell",
