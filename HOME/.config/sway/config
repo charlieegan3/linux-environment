@@ -198,6 +198,7 @@ for_window [title="Ulauncher.*"] border pixel 0
 # client colors
 client.focused #FF7F00 #FF7F00 #000000
 
+output * bg ~/.local/share/backgrounds/anime-landscape-girl.jpg fill
 
 # for when zoom works
 # xwayland disable
