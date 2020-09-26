@@ -18,13 +18,9 @@
     - mako-1.4.1 # notification
     - sway-1.4
     - ulauncher-5.8.0
-    # TODO work out why this doens't work for cloud vm
-    # - kernel-headers-{{ kernel_version.stdout }} # needed for v4l2loopback
-    # - kernel-devel-{{ kernel_version.stdout }} # needed for v4l2loopback
-    - kernel-headers # needed for v4l2loopback
-    - kernel-devel # needed for v4l2loopback
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
+    - wf-recorder-0.2.1
     - vlc-1:3.0.11.1
     - ffmpeg-4.2.4
     - waybar-0.9.3
@@ -48,7 +44,7 @@
     warn: no
   become: yes
 
-- name: install kernal packages if available
+- name: install kernel packages if available
   # not available on the cloud VM builder
   shell: |
     header_name=kernel-headers-{{ kernel_version.stdout }}

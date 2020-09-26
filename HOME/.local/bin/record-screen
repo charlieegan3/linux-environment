@@ -2,13 +2,21 @@
 
 set -e
 
-# find the name of the video device from the module
-device="$(v4l2-ctl --list-devices | grep WfRecorder -A 1 | tail -n 1 | tr -d [:space:])"
-if [[ $device == "" ]]; then
+# names of the two virtual devices enabled in the kernel module
+raw_handle=WfRecorder
+
+# find the path of the video device from the module
+device_path="$(v4l2-ctl --list-devices | grep $raw_handle -A 1 | tail -n 1 | tr -d [:space:])"
+if [[ $device_path == "" ]]; then
         notify-send -t 2000 "virtual camera is missing"
         >&2 echo "missing camera"
         exit 1
 fi
+
+echo "using $device_path (matched $raw_handle) for output"
+
+# set the name of the device (minus the /dev/)
+device_name="$(basename $device_path)"
 
 # kill existing streamers
 if [[ "$(pgrep wf-recorder)" != "" ]]; then
@@ -16,7 +24,7 @@ if [[ "$(pgrep wf-recorder)" != "" ]]; then
 fi
 
 # find users of the device
-users="$(fuser /dev/video4 2>/dev/null | awk '{for (i=1; i<=NF; i++) print $i}' | xargs -n 1 -I {} ps -p {} -o comm= | paste -s -d",")"
+users="$(fuser $device_path 2>/dev/null | awk '{for (i=1; i<=NF; i++) print $i}' | xargs -n 1 -I {} ps -p {} -o comm= | paste -s -d",")"
 if [[ "$users" != "" ]]; then
         notify-send -t 3000 "can't record: $users using camera"
         >&2 echo "camera in use"
@@ -25,7 +33,7 @@ fi
 
 
 # check if we have still failed to stop the use of the old device
-format="$(cat /sys/devices/virtual/video4linux/video4/format)"
+format="$(cat /sys/devices/virtual/video4linux/$device_name/format)"
 if [[ $format != "" ]]; then
         notify-send -t 2000 "virtual camera busy"
         >&2 echo "busy"
@@ -46,9 +54,9 @@ if [[ "$1" == "slurp" ]]; then
         x="$(echo $data | jq .x)"
         y="$(echo $data | jq .y)"
         echo $data
-        notify-send -t 2000 "Recording Selection"
+        notify-send -t 2000 "Recording Selection to $device_name"
 else
-        notify-send -t 2000 "Recording Screen"
+        notify-send -t 2000 "Recording Screen to $device_name"
 fi
 
 # TODO reduce framerate https://github.com/ammen99/wf-recorder/pull/102
@@ -57,4 +65,4 @@ wf-recorder \
         -g "$x,$y ${width}x$height" \
         --muxer=v4l2 \
         --codec=rawvideo \
-        --file="$device"
+        --file="$device_path"

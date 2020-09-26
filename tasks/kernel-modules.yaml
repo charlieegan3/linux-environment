@@ -1,0 +1,13 @@
+- name: enable v4l2loopback kernel module
+  lineinfile:
+    path: /etc/modules-load.d/v4l2loopback.conf
+    regexp: '^v4l2loopback$'
+    line: v4l2loopback
+    create: true
+
+- name: start v4l2loopback kernel module at login
+  lineinfile:
+    path: /etc/modprobe.d/v4l2loopback.conf
+    regexp: 'v4l2loopback'
+    line: options v4l2loopback exclusive_caps=1 card_label=WfRecorder
+    create: true
