@@ -16,6 +16,8 @@
     import_tasks: tasks/repositories.yaml
   - name: install packages
     import_tasks: tasks/packages.yaml
+  - name: remove-packages
+    import_tasks: tasks/remove-packages.yaml
   - name: flatpaks
     import_tasks: tasks/flatpaks.yaml
   - name: wf-recorder

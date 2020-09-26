@@ -1,0 +1,23 @@
+- name: remove packages
+  dnf:
+    name:
+    - "@GNOME"
+    - "@LibreOffice"
+    - NetworkManager-openconnect-gnome
+    - NetworkManager-openvpn-gnome
+    - NetworkManager-pptp-gnome
+    - NetworkManager-ssh-gnome
+    - NetworkManager-vpnc-gnome
+    - cheese
+    - desktop-backgrounds-gnome
+    - evince
+    - f32-backgrounds-gnome
+    - fros-gnome
+    - libgnomekbd
+    - libreoffice-core
+    - pinentry-gnome3
+    - qgnomeplatform
+    - rhythmbox
+    - simple-scan
+    state: absent
+  become: yes

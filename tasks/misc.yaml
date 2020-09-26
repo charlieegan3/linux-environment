@@ -2,5 +2,5 @@
   lineinfile:
     path: /etc/sudoers
     regexp: '^timestamp_timeout'
-    line: 'Defaults timestamp_timeout=15'
+    line: 'Defaults timestamp_timeout=30'
   become: yes
