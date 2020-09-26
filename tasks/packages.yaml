@@ -36,6 +36,8 @@
     - rclone-1.51.0
     - hugo-0.69.0
     - entr-4.6
+    - slurp-1.2.0
+    - swappy-1.2.1
     state: latest
   become: yes
 

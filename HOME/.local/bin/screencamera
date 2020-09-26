@@ -31,7 +31,6 @@ if [[ "$users" != "" ]]; then
         exit 1
 fi
 
-
 # check if we have still failed to stop the use of the old device
 format="$(cat /sys/devices/virtual/video4linux/$device_name/format)"
 if [[ $format != "" ]]; then

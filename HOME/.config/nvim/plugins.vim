@@ -3,9 +3,7 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!vendor*' --glob '!.git/
 let g:UltiSnipsSnippetDirectories=["my-snippets"]
 let g:UltiSnipsExpandTrigger="<leader><Tab>"
 
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
+let g:ackprg = 'rg --vimgrep'
 
 call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -18,6 +16,8 @@ call plug#begin()
   Plug 'zchee/deoplete-go', { 'do': 'make'}
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+
+  Plug 'mileszs/ack.vim'
 
   Plug 'Chiel92/vim-autoformat' " opa autoformat
 

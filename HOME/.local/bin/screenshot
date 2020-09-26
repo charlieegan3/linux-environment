@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+OUTPUT_PATH=$HOME/Pictures/Screenshots/
+mkdir -p $OUTPUT_PATH
+
+FILENAME=$OUTPUT_PATH/screenshot-$(date +%F_%T | sed -e s/\:/-/g).png
+
+# set the default size
+width=$(swaymsg -t get_outputs --raw | jq .[0].rect.width)
+height=$(swaymsg -t get_outputs --raw | jq .[0].rect.height)
+x=0
+y=0
+
+# use slurp to set the format if showing an area
+if [[ "$1" == "slurp" ]] || [[ "$2" == "slurp" ]]; then
+  data="$(slurp -f '{ "height": %h, "width": %w, "x": %x, "y": %y }')"
+  width="$(echo $data | jq .width)"
+  height="$(echo $data | jq .height)"
+  x="$(echo $data | jq .x)"
+  y="$(echo $data | jq .y)"
+fi
+
+# annotate in swappy if we need to
+if [[ "$1" == "swappy" ]] || [[ "$2" == "swappy" ]]; then
+  grim -g "$x,$y ${width}x$height" - | swappy -f - -o $FILENAME
+  # swappy sends own notification... :(
+  # notify-send -a "" -t 2000 "Screenshot saved"
+else
+  grim -g "$x,$y ${width}x$height" $FILENAME
+  notify-send -a "" -t 2000 "Screenshot saved"
+fi

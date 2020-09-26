@@ -165,8 +165,6 @@ bar {
     swaybar_command waybar
 }
 
-# flux
-bindsym $mod+Menu exec bash -c 'if [ -z "$(pgrep gammastep)" ]; then eval "gammastep -O 2000" &>/dev/null & disown; else pkill -f gammastep; fi'
 # audio
 bindsym XF86AudioLowerVolume exec bash -c 'pactl set-sink-volume 0 -5%'
 bindsym XF86AudioRaiseVolume exec bash -c 'pactl set-sink-volume 0 +5%'
@@ -174,17 +172,12 @@ bindsym XF86AudioMute exec bash -c 'pactl set-sink-volume 0 0%'
 # apps
 bindsym $mod+Shift+Return exec firefox
 # screenshot
-bindsym Print exec bash -c 'mkdir -p $HOME/Pictures/Screenshots/ && grim $HOME/Pictures/Screenshots/screenshot-$(date +%F_%T | sed -e s/\:/-/g).png'
-bindsym $mod+Print exec bash -c 'mkdir -p $HOME/Pictures/Screenshots/ && grim -g "$(slurp)" $HOME/Pictures/Screenshots/screenshot-$(date +%F_%T | sed -e s/\:/-/g).png'
-bindsym $mod+Shift+Print exec bash -c 'mkdir -p $HOME/Pictures/Screenshots/ && grim -g "$(slurp)" - | swappy -f -'
+bindsym Print exec bash -c 'screenshot'
+bindsym $mod+Print exec bash -c 'screenclip stop'
 
 # windows
 bindsym $mod+tab workspace back_and_forth
 bindsym $mod+Shift+tab workspace next_on_output
-
-# video
-bindsym Ctrl+Print exec bash -c 'FILENAME=$(mkdir -p $HOME/Videos/Recordings && echo $HOME/Videos/Recordings/clip-$(date +%F_%T | sed -e s/\:/-/g).mp4); if [ -z "$(pgrep wf-recorder)" ]; then wf-recorder -f $FILENAME; else kill -SIGINT $(pgrep wf-rec); fi;'
-bindsym Ctrl+Shift+Print exec bash -c 'FILENAME=$(mkdir -p $HOME/Videos/Recordings && echo $HOME/Videos/Recordings/clip-$(date +%F_%T | sed -e s/\:/-/g).mp4); if [ -z "$(pgrep wf-recorder)" ]; then wf-recorder -g "$(slurp)" -f $FILENAME; else kill -SIGINT $(pgrep wf-rec); fi;'
 
 # start mako to allow notifications
 exec mako

@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# if stop passed then do that instead
+if [[ "$1" == "stop" ]]; then
+  if [[ "$(pgrep wf-recorder)" != "" ]]; then
+    pgrep wf-recorder | xargs -n 1 --no-run-if-empty kill -SIGINT
+    notify-send -t 2000 "Recording stopped"
+  else
+    notify-send -t 2000 "Recording not running"
+  fi
+  exit
+fi
+
+if [[ "$(pgrep wf-recorder)" != "" ]]; then
+  notify-send -a charlie -t 2000 "Recording already running"
+  exit
+fi
+
+OUTPUT_PATH=$HOME/Videos/Recordings
+mkdir -p $OUTPUT_PATH
+
+FILENAME=$(echo $OUTPUT_PATH/clip-$(date +%F_%T | sed -e s/\:/-/g).mp4)
+
+# set the default format
+width=$(swaymsg -t get_outputs --raw | jq .[0].rect.width)
+height=$(swaymsg -t get_outputs --raw | jq .[0].rect.height)
+x=0
+y=0
+
+# use slurp to set the format if showing an area
+if [[ "$1" == "slurp" ]]; then
+        data="$(slurp -f '{ "height": %h, "width": %w, "x": %x, "y": %y }')"
+        width="$(echo $data | jq .width)"
+        height="$(echo $data | jq .height)"
+        x="$(echo $data | jq .x)"
+        y="$(echo $data | jq .y)"
+        echo $data
+        notify-send -t 2000 "Recording Selection"
+else
+        notify-send -t 2000 "Recording Screen"
+fi
+
+wf-recorder -g "$x,$y ${width}x$height" -f $FILENAME

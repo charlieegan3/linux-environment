@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# always kill running instances
+pkill -f gammastep
+
+# if off, exit early
+if [[ "$1" == "off" ]]; then
+  pkill -f gammastep
+  exit
+fi
+
+# if on, use default
+if [[ "$1" == "on" ]]; then
+  eval "gammastep -O 2000" &>/dev/null & disown
+fi
+
+# if other, use as gammastep value
+if [[ ! "$1" == "" ]]; then
+  eval "gammastep -O $1" &>/dev/null & disown
+fi
