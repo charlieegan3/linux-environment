@@ -48,9 +48,10 @@
     warn: no
   become: yes
 
-- name: remove packages
-  dnf:
-    name:
-    # - vim-minimal
-    state: absent
-  become: yes
+# TODO, have a tidy
+# - name: remove packages
+#   dnf:
+#     name:
+#     # - vim-minimal
+#     state: absent
+#   become: yes
