@@ -1,2 +1,28 @@
 # the default is forever
 default-timeout=10000
+
+markup=1
+actions=1
+
+# Format
+font=Fira Code 10
+border-color=#002028
+border-size=2
+background-color=#002b36AA
+text-color=#fdf6e3
+format=<b>%s</b> <span color="#93a1a1">(%a)</span>\n%b
+
+[urgency=low]
+text-color=#93a1a1
+
+[urgency=low actionable]
+border-color=#93a1a1
+
+[urgency=normal actionable]
+border-color=#268bd2
+
+[urgency=high]
+border-color=#9c2220
+
+[urgency=high actionable]
+border-color=#6c71c4
