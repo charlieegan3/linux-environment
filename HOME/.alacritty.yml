@@ -1,2 +1,4 @@
 shell:
   program: /usr/bin/tmux
+font:
+  size: 12
