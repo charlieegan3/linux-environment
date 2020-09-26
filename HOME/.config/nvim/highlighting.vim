@@ -2,7 +2,7 @@
 highlight StatusLine ctermfg=white ctermbg=black
 highlight StatusLine ctermfg=white ctermbg=black
 highlight WildMenu ctermfg=white ctermbg=black
-highlight LineNr ctermfg=darkgrey ctermbg=white
+highlight LineNr ctermfg=darkgrey ctermbg=black
 highlight SpellBad ctermbg=255 ctermfg=88 cterm=none
 highlight SpellLocal ctermbg=255 ctermfg=88 cterm=none
 highlight SpellRare ctermbg=255 ctermfg=88 cterm=none
@@ -31,6 +31,6 @@ highlight Visual ctermbg=252
 highlight ColorColumn ctermbg=250
 
 highlight BufTabLineCurrent ctermbg=black ctermfg=250
-highlight BufTabLineActive ctermbg=white
-highlight BufTabLineHidden ctermbg=grey
+highlight BufTabLineActive ctermbg=darkgrey
+highlight BufTabLineHidden ctermbg=darkgrey
 highlight BufTabLineFill ctermbg=grey
