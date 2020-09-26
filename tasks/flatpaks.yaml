@@ -2,3 +2,7 @@
   community.general.flatpak:
     name: https://dl.flathub.org/repo/appstream/com.spotify.Client.flatpakref
     state: present
+- name: install zoom
+  community.general.flatpak:
+    name: https://dl.flathub.org/repo/appstream/us.zoom.Zoom.flatpakref
+    state: present
