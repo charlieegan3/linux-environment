@@ -1,8 +1,6 @@
 - name: remove packages
   dnf:
     name:
-    - "@GNOME"
-    - "@LibreOffice"
     - NetworkManager-openconnect-gnome
     - NetworkManager-openvpn-gnome
     - NetworkManager-pptp-gnome
@@ -30,3 +28,4 @@
     if [[ "$(dnf grouplist --installed | grep LibreOffice)" ]]; then
       dnf groupremove -r LibreOffice
     fi
+  become: true

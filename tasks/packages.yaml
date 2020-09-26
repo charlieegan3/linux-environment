@@ -48,10 +48,17 @@
     warn: no
   become: yes
 
-# TODO, have a tidy
-# - name: remove packages
-#   dnf:
-#     name:
-#     # - vim-minimal
-#     state: absent
-#   become: yes
+- name: install kernal packages if available
+  # not available on the cloud VM builder
+  shell: |
+    header_name=kernel-headers-{{ kernel_version.stdout }}
+    devel_name=kernel-devel-{{ kernel_version.stdout }}
+
+    if [[ "$(dnf --showduplicates search kernel-headers | grep $header_name)" ]]; then
+      dnf install -y kernel-headers-{{ kernel_version.stdout }}
+    fi
+
+    if [[ "$(dnf --showduplicates search kernel-devel | grep $devel_name)" ]]; then
+      dnf install -y kernel-devel-{{ kernel_version.stdout }}
+    fi
+  become: true
