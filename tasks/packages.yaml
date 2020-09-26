@@ -35,6 +35,7 @@
     - ripgrep-12.1.1
     - rclone-1.51.0
     - hugo-0.69.0
+    - entr-4.6
     state: latest
   become: yes
 
