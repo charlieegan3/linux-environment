@@ -1,4 +1,3 @@
-
 highlight StatusLine ctermfg=white ctermbg=black
 highlight StatusLine ctermfg=white ctermbg=black
 highlight WildMenu ctermfg=white ctermbg=black
@@ -26,7 +25,7 @@ highlight PmenuSel ctermbg=234 ctermfg=178
 
 highlight SpecialKey ctermfg=248
 
-highlight Visual ctermbg=252
+highlight Visual ctermbg=236
 
 highlight ColorColumn ctermbg=250
 
