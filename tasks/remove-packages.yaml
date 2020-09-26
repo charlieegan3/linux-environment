@@ -21,3 +21,12 @@
     - simple-scan
     state: absent
   become: yes
+
+- name: remove gnome and libreoffice groups
+  shell: |
+    if [[ "$(dnf grouplist --installed | grep GNOME)" ]]; then
+      dnf groupremove -r GNOME
+    fi
+    if [[ "$(dnf grouplist --installed | grep LibreOffice)" ]]; then
+      dnf groupremove -r LibreOffice
+    fi
