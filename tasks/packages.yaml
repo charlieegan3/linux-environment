@@ -38,6 +38,8 @@
     - entr-4.6
     - slurp-1.2.0
     - swappy-1.2.1
+    - feh-3.4.1
+    - gimp-2.10.20
     state: latest
   become: yes
 
