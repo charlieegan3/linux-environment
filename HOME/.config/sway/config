@@ -5,8 +5,6 @@ set $left h
 set $down j
 set $up k
 set $right l
-# set terminal
-set $term alacritty
 # launcher, pass to swaymsg to open in current workspace
 set $menu ulauncher | xargs swaymsg exec --
 # resize step size
@@ -45,8 +43,6 @@ input "1133:45915:MX_Keys_Keyboard" {
 }
 
 
-# start a terminal
-bindsym $mod+Return exec $term
 # kill focused window
 bindsym $mod+Shift+q kill
 # start launcher
@@ -170,10 +166,12 @@ bindsym XF86AudioLowerVolume exec bash -c 'pactl set-sink-volume 0 -5%'
 bindsym XF86AudioRaiseVolume exec bash -c 'pactl set-sink-volume 0 +5%'
 bindsym XF86AudioMute exec bash -c 'pactl set-sink-volume 0 0%'
 # apps
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Return exec env WAYLAND_DISPLAY=wayland-0 alacritty
+bindsym $mod+Shift+Return exec env MOZ_ENABLE_WAYLAND=1 WAYLAND_DISPLAY=wayland-0 firefox
 # screenshot
 bindsym Print exec bash -c 'screenshot'
 bindsym $mod+Print exec bash -c 'screenclip stop'
+bindsym $mod+Shift+s exec deswitch
 
 # windows
 bindsym $mod+tab workspace back_and_forth

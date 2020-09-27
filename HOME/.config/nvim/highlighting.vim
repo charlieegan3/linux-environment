@@ -27,7 +27,7 @@ highlight SpecialKey ctermfg=248
 
 highlight Visual ctermbg=236
 
-highlight ColorColumn ctermbg=250
+highlight ColorColumn ctermbg=236
 
 highlight BufTabLineCurrent ctermbg=black ctermfg=250
 highlight BufTabLineActive ctermbg=darkgrey
