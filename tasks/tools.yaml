@@ -98,3 +98,17 @@
   args:
     creates: /usr/bin/gcloud
   become: true
+
+- name: install bitwarden cli
+  shell: |
+    USERNAME={{ username }}
+    TEMP_DIR="$(mktemp -d)"
+    cd $TEMP_DIR
+    curl -L 'https://vault.bitwarden.com/download/?app=cli&platform=linux' > bw.zip
+    unzip bw.zip
+    chmod +x bw
+    mv bw /home/$USERNAME/.local/bin/bw
+    cd -
+    rm -rf $TEMP_DIR
+  args:
+    creates: /home/{{ username }}/.local/bin/bw
