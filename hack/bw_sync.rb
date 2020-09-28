@@ -231,3 +231,8 @@ if File.read(SECRET_MANIFEST_FILE) != File.read(SECRET_MANIFEST_FILE_REMOTE)
   end
   fail "cant delete versioned data" unless run_cmd("rm", version_filename)
 end
+
+# attempt to remove the remote copy
+if File.exists?(SECRET_MANIFEST_FILE_REMOTE)
+  fail "cant remove remote copy" unless run_cmd("rm", SECRET_MANIFEST_FILE_REMOTE)
+end
