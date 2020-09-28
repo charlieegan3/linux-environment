@@ -40,3 +40,8 @@ import_home_dir_files:
 .PHONY: update_fw
 update_fw:
 	sudo fwupdmgr update
+
+# sync secrets from bw
+.PHONY: sync_secrets
+sync_secrets:
+	./hack/bw_sync.rb
