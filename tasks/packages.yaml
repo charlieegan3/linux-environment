@@ -40,6 +40,7 @@
     - swappy-1.2.1
     - feh-3.4.1
     - gimp-2.10.20
+    - blueman-2.1.3
     state: latest
   become: yes
 
