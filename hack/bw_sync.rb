@@ -25,7 +25,7 @@ end
 
 
 # check that the bw cli is installed on the machine
-unless run_cmd("hash", "bw")
+unless system("bash -c 'hash bw'")
   fail "bw cli is not installed"
 end
 
@@ -39,6 +39,9 @@ status = JSON.parse(status_output.split("\n").last)["status"]
 # get the session, test if env var session if logged in, if yes, use that in
 # calls, if not, then get a new session manually
 session = ENV["BW_SESSION"]
+if status == "unauthenticated"
+  `bw login`
+end
 if status != "unlocked"
   output = `bw unlock`
   session = output.scan(/\-\-session (.*)/).flatten.last
@@ -46,17 +49,17 @@ end
 
 
 # find folder id, if missing, create it
-all_folders = JSON.parse(run_cmd(*%w(bw list folders)))
+all_folders = JSON.parse(run_cmd(*%w(bw list folders --session), session))
 folder = all_folders.find { |i| i["name"] == BW_FOLDER }
 if folder.nil?
   folder_data = { name: BW_FOLDER }
   encoded_data = Base64.encode64(JSON.pretty_generate(folder_data)).split("\n").join
-  folder = JSON.parse(run_cmd(*%w(bw create folder), encoded_data))
+  folder = JSON.parse(run_cmd(*%w(bw create folder --session), session, encoded_data))
 end
 folder_id = folder["id"]
 
 # find the item id
-all_items = JSON.parse(run_cmd(*%w(bw list items --folderid), folder_id))
+all_items = JSON.parse(run_cmd(*%w(bw list items --folderid), folder_id, "--session", session))
 item = all_items.find { |i| i["name"] == BW_ITEM }
 # create a new item if missing
 if item.nil?
@@ -69,7 +72,7 @@ if item.nil?
     "secureNote": { "type": 0 }
   }
   encoded_data = Base64.encode64(JSON.pretty_generate(item_data)).split("\n").join
-  item = JSON.parse(run_cmd(*%w(bw create item), encoded_data))
+  item = JSON.parse(run_cmd(*%w(bw create item --session), session, encoded_data))
 end
 item_id = item["id"]
 
@@ -87,7 +90,7 @@ unless (item["attachments"] || []).empty?
   end
 
   # get the contents of the most recent secrets manifest
-  unless run_cmd("bw", "get", "attachment", most_recent["id"], "--itemid", item_id, "--output", SECRET_MANIFEST_FILE_REMOTE)
+  unless run_cmd("bw", "get", "attachment", most_recent["id"], "--itemid", item_id, "--output", SECRET_MANIFEST_FILE_REMOTE, "--session", session)
     fail "could not get attachment"
   end
 
@@ -120,7 +123,7 @@ unless (item["attachments"] || []).empty?
       response = prompt("d/Enter: ")
       if response == "d"
         to_remove.each do |attachment|
-          unless run_cmd("bw", "delete", "attachment", attachment["id"], "--itemid", item_id)
+          unless run_cmd("bw", "delete", "attachment", attachment["id"], "--itemid", item_id, "--session", session)
             fail "could not delete attachment"
           end
         end
@@ -223,7 +226,7 @@ if File.read(SECRET_MANIFEST_FILE) != File.read(SECRET_MANIFEST_FILE_REMOTE)
   # upload the new config as a new attachment
   version_filename = Time.new.strftime("#{SECRET_MANIFEST_FILE.sub(".yaml", "")}.%Y-%m-%d_%H-%M-%S.yaml")
   fail "cant create versioned data" unless run_cmd("cp", SECRET_MANIFEST_FILE, version_filename)
-  unless run_cmd("bw", "create", "attachment", "--file", version_filename, "--itemid", item_id)
+  unless run_cmd("bw", "create", "attachment", "--file", version_filename, "--itemid", item_id, "--session", session)
     fail "could not create new attachment"
   end
   fail "cant delete versioned data" unless run_cmd("rm", version_filename)
