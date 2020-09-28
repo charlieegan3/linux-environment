@@ -175,7 +175,7 @@ secrets.each do |s|
   end
 
   # if the has different content, offer option to overwrite
-  if File.exists?(full_path) && File.read(full_path) != s["content"]
+  if File.exists?(full_path) && File.read(full_path) != s["content"] && s["content"].strip != ""
     puts "#{s["path"]} does not match contents in #{SECRET_MANIFEST_FILE}"
     puts "--- #{SECRET_MANIFEST_FILE} ---\n#{s["content"]}\n---"
     puts "--- #{full_path} ---\n#{File.read(full_path)}\n---"
