@@ -112,3 +112,16 @@
     rm -rf $TEMP_DIR
   args:
     creates: /home/{{ username }}/.local/bin/bw
+
+- name: install yq
+  shell: |
+    USERNAME={{ username }}
+    TEMP_DIR="$(mktemp -d)"
+    cd $TEMP_DIR
+    curl -LO 'https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64'
+    chmod +x yq_linux_amd64
+    mv yq_linux_amd64 /home/$USERNAME/.local/bin/yq
+    cd -
+    rm -rf $TEMP_DIR
+  args:
+    creates: /home/{{ username }}/.local/bin/yq

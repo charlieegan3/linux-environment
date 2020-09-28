@@ -27,4 +27,4 @@
     import_tasks: tasks/tools.yaml
   # needs: golang, home .config
   - name: vim
-    import_tasks: tasks/tools.yaml
+    import_tasks: tasks/vim.yaml
