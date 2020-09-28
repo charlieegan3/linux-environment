@@ -169,6 +169,9 @@ secrets.each do |s|
     end
 
     File.write(full_path, s["content"])
+    if s["permissions"]
+      File.chmod(s["permissions"].to_i(8), full_path)
+    end
   end
 
   # if the has different content, offer option to overwrite
@@ -181,6 +184,9 @@ secrets.each do |s|
       response = prompt("o/Enter: ")
       if response == "o"
         File.write(full_path, s["content"])
+        if s["permissions"]
+          File.chmod(s["permissions"].to_i(8), full_path)
+        end
         break
       elsif response == ""
         break
@@ -197,6 +203,7 @@ secrets.each do |s|
   full_path = File.expand_path(s["path"])
 
   # if the has different content, offer option to overwrite
+  # TODO load in permissions
   if File.exists?(full_path) && File.read(full_path) != s["content"]
     puts "#{s["path"]} does not match contents in #{SECRET_MANIFEST_FILE}"
     puts "--- #{SECRET_MANIFEST_FILE} ---\n#{s["content"]}\n---"
