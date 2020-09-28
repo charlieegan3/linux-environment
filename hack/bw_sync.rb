@@ -47,6 +47,8 @@ if status != "unlocked"
   session = output.scan(/\-\-session (.*)/).flatten.last
 end
 
+# pull data from bw on each run to ensure freshness
+fail "cant sync" unless system("bw sync --session #{session}")
 
 # find folder id, if missing, create it
 all_folders = JSON.parse(run_cmd(*%w(bw list folders --session), session))
