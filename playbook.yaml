@@ -16,6 +16,8 @@
     import_tasks: tasks/repositories.yaml
   - name: install packages
     import_tasks: tasks/packages.yaml
+  - name: docker
+    import_tasks: tasks/docker.yaml
   - name: remove-packages
     import_tasks: tasks/remove-packages.yaml
   - name: flatpaks

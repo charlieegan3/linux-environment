@@ -21,10 +21,18 @@
     state: latest
     disable_gpg_check: yes # seems to have been signed with the wrong keys for v31?
   become: yes
-    
+
 - name: install rawhide repo
   dnf:
     name:
     - fedora-repos-rawhide # needed for gammastep
     state: latest
   become: yes
+
+- name: install docker repo
+  shell: |
+    dnf config-manager \
+      --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
+  become: true
