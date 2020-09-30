@@ -2,7 +2,7 @@
   name = Charlie Egan
   email = charlieegan3@users.noreply.github.com
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.config/git/global-gitignore
   filemode = false
 [transfer]
@@ -17,6 +17,7 @@
   untracked = red bold
 [commit]
   template = ~/.config/git/gitmessage
+  gpgsign = true
 [status]
   showUntrackedFiles = all
 [stash]
