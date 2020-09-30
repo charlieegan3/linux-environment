@@ -42,6 +42,7 @@
     - gimp-2.10.20
     - blueman-2.1.3
     - vifm-0.10.1
+    - ImageMagick-6.9.11.27
     state: latest
   become: yes
 
