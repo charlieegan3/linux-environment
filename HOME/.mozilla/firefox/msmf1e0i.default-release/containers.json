@@ -1,0 +1,46 @@
+{
+  "version": 4,
+  "lastUserContextId": 5,
+  "identities": [
+    {
+      "userContextId": 1,
+      "public": true,
+      "icon": "fingerprint",
+      "color": "yellow",
+      "telemetryId": 1,
+      "name": "Personal"
+    },
+    {
+      "userContextId": 2,
+      "public": true,
+      "icon": "briefcase",
+      "color": "blue",
+      "telemetryId": 2,
+      "name": "Work"
+    },
+    {
+      "userContextId": 4,
+      "public": true,
+      "icon": "circle",
+      "color": "green",
+      "telemetryId": 4,
+      "name": "Default"
+    },
+    {
+      "userContextId": 5,
+      "public": false,
+      "icon": "",
+      "color": "",
+      "name": "userContextIdInternal.thumbnail",
+      "accessKey": ""
+    },
+    {
+      "userContextId": 4294967295,
+      "public": false,
+      "icon": "",
+      "color": "",
+      "name": "userContextIdInternal.webextStorageLocal",
+      "accessKey": ""
+    }
+  ]
+}
