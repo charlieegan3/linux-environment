@@ -26,6 +26,7 @@
   dnf:
     name:
     - fedora-repos-rawhide # needed for gammastep
+    - fedora-workstation-repositories # needed for chrome unstable
     state: latest
   become: yes
 
@@ -33,6 +34,17 @@
   shell: |
     dnf config-manager \
       --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+  # TODO check if this creates the file or marks it as enabled?
+  # might need to use line in file
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
+  become: true
+
+- name: enable chrome repo
+  shell: |
+    dnf config-manager --set-enabled google-chrome
+  # TODO check if this creates the file or marks it as enabled?
+  # might need to use line in file
+  args:
+    creates: /etc/yum.repos.d/google-chrome.repo
   become: true
