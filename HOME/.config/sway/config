@@ -195,3 +195,6 @@ output * bg ~/.local/share/backgrounds/anime-landscape-girl.jpg fill
 # xwayland disable
 
 include /etc/sway/config.d/*
+
+# from guide https://github.com/swaywm/sway/wiki/Systemd-integration
+exec "systemctl --user import-environment; systemctl --user start sway-session.target"

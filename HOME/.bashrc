@@ -1,3 +1,13 @@
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# if running from tty1 start sway
+if [[ "$(tty)" == "/dev/tty1" ]]; then
+    # https://github.com/systemd/systemd/issues/14489
+    export XDG_SESSION_TYPE=wayland
+    exec systemd-cat -t sway sway
+fi
+
 # use vim as the system editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
