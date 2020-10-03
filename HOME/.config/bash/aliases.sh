@@ -59,9 +59,6 @@ envrc() {
 gitcd() {
   cd $(git rev-parse --show-toplevel)
 }
-dropbox() {
-  ruby /etc/scripts/dropbox_explorer.rb
-}
 # TODO find a nicer place for these, maybe in git config
 alias gitb="git branch | grep '^\*' | cut -d' ' -f2 | tr -d '\n'"
 bran() {
