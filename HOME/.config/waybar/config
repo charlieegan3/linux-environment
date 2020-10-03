@@ -17,7 +17,8 @@
     "custom/weather",
     "clock",
     "custom/screenshot",
-    "custom/screenclip"
+    "custom/screenclip",
+    "custom/nightmode"
   ],
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -113,6 +114,12 @@
     "on-click-right": "screenclip slurp",
     "on-click-middle": "screenclip stop",
     "exec": "screenclip status",
+    "return-type": "json",
+    "interval": 1
+  },
+  "custom/nightmode": {
+    "on-click": "nightmode toggle",
+    "exec": "nightmode status",
     "return-type": "json",
     "interval": 1
   }

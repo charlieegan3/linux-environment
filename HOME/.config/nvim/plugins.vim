@@ -9,6 +9,8 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
+  Plug 'chriskempson/base16-vim'
+
   Plug 'Shougo/deoplete.nvim'
   Plug 'Shougo/context_filetype.vim'
   Plug 'Shougo/neco-syntax'

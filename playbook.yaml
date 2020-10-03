@@ -28,5 +28,5 @@
   - name: tools
     import_tasks: tasks/tools.yaml
   # needs: golang, home .config
-  - name: vim
-    import_tasks: tasks/vim.yaml
+  - name: vim & terminal
+    import_tasks: tasks/vim-term.yaml

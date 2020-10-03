@@ -23,3 +23,19 @@
     GOROOT: "{{ GOROOT }}"
     GO111MODULE: "{{ GO111MODULE }}"
   become_user: "{{ username }}"
+
+- name: install alacritty base16
+  shell: |
+    USERNAME={{ username }}
+    git clone https://github.com/aaron-williamson/base16-alacritty /home/$USERNAME/.local/share/base16-alacritty
+  args:
+    creates: /home/{{ username }}/.local/share/base16-alacritty
+
+- name: install alacritty from base config if missing
+  shell: |
+    USERNAME={{ username }}
+    cp /home/$USERNAME/.config/alacritty/alacritty.base.yml \
+      /home/$USERNAME/.config/alacritty/alacritty.yml
+  args:
+    creates: /home/{{ username }}/.config/alacritty/alacritty.yml
+  become_user: "{{ username }}"

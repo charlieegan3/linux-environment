@@ -62,7 +62,8 @@ window#waybar {
 #custom-screenshot,
 #custom-screenshot-swappy,
 #custom-screenclip,
-#custom-screenclip-slurp {
+#custom-screenclip-slurp,
+#custom-nightmode {
   background-color: black;
   padding: 0 10px;
 }

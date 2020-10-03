@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+COLOR_DIR="$HOME/.local/share/base16-alacritty/colors"
+LIGHT_COLOR='base16-gruvbox-light-soft.yml'
+DARK_COLOR='base16-tube.yml'
+NVIM_CONFIG_PATH='~/.config/nvim/init.vim'
+
+night_mode_on=false
+# use gammastep presence to test if night mode is running
+if [[ "$(pgrep gammastep)" != "" ]]; then
+  night_mode_on=true
+fi
+
+# status for waybar module
+if [[ "$1" == "status" ]]; then
+  # use gammastep presence to test if night mode is running
+  if $night_mode_on; then
+    # if running, show control to turn on day mode
+    echo '{"text": "🌞", "alt": "", "tooltip": "day mode", "class": "" }'
+  else
+    echo '{"text": "🌙", "alt": "", "tooltip": "night mode", "class": "" }'
+  fi
+
+  exit
+fi
+
+if [[ "$1" == "toggle" ]]; then
+  if $night_mode_on; then
+    # disable tint
+    pkill -f gammastep || true
+    alacritty-colorscheme -C $COLOR_DIR -a $LIGHT_COLOR -V
+  else
+    eval "gammastep -O 2000" &>/dev/null & disown
+    alacritty-colorscheme -C $COLOR_DIR -a $DARK_COLOR -V
+  fi
+
+  # if nvim is running, reload
+  if [[ "$(nvr --nostart --serverlist)" != "" ]]; then
+    nvr --nostart --serverlist | sort | uniq | xargs -n 1 nvr --nostart -cc "so $NVIM_CONFIG_PATH" --servername
+  fi
+
+  exit
+fi
+
+echo unknown or missing input
+exit 1

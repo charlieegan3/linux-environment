@@ -131,3 +131,9 @@
     pip3 install --user neovim-remote
   args:
     creates: /home/{{ username }}/.local/bin/nvr
+
+- name: install alacritty-colorscheme
+  shell: |
+    pip install --user alacritty-colorscheme
+  args:
+    creates: /home/{{ username }}/.local/bin/alacritty-colorscheme
