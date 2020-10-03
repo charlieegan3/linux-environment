@@ -31,11 +31,6 @@ install_packer:
 	  sudo mv packer /usr/local/bin/packer; \
 	fi
 
-# copy the current dotfiles back into this repo for commit
-.PHONY: import_home_dir_files
-import_home_dir_files:
-	./hack/import_home_dir_files.rb
-
 # run the commandline firmware update process
 .PHONY: update_fw
 update_fw:
@@ -45,3 +40,8 @@ update_fw:
 .PHONY: sync_secrets
 sync_secrets:
 	./hack/bw_sync.rb
+
+# copy out or in the current dotfiles
+.PHONY: sync_dotfiles
+sync_dotfiles:
+	./hack/sync_home_dir_files.rb
