@@ -45,6 +45,7 @@
     - vifm-0.10.1
     - ImageMagick-6.9.11.27
     - perl-Image-ExifTool-12.00
+    - pavucontrol-4.0 # volume controller
     state: latest
   become: yes
 
