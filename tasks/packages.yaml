@@ -46,6 +46,7 @@
     - ImageMagick-6.9.11.27
     - perl-Image-ExifTool-12.00
     - pavucontrol-4.0 # volume controller
+    - python3-devel-3.8.5 # needed to install nvr
     state: latest
   become: yes
 

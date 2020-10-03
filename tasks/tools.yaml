@@ -125,3 +125,9 @@
     rm -rf $TEMP_DIR
   args:
     creates: /home/{{ username }}/.local/bin/yq
+
+- name: install neovim remote
+  shell: |
+    pip3 install --user neovim-remote
+  args:
+    creates: /home/{{ username }}/.local/bin/nvr
