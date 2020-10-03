@@ -177,9 +177,6 @@ bindsym $mod+Shift+s exec deswitch
 bindsym $mod+tab workspace back_and_forth
 bindsym $mod+Shift+tab workspace next_on_output
 
-# start mako to allow notifications
-exec mako
-
 # custom border and title settings
 for_window [shell=".*"] title_format "%title (%shell)"
 for_window [title=".*Firefox"] border pixel 2
