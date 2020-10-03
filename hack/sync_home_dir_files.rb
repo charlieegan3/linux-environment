@@ -1,17 +1,20 @@
 #!/usr/bin/env ruby
 
-print "import or export: "
-direction = gets.chomp
+if ARGV[0] != "import" && ARGV[0] != "export"
+  fail "need import or export arg"
+end
+
+puts "#{ARGV[0]}ing files..."
 
 # sets the args for the cp command
 source = "$HOME"
 destination = "HOME"
 
-if direction.match(/^e/)
+# swap the args if it's export
+if ARGV[0] == "export"
   source, destination = destination, source
 end
 
-puts "reviewing files..."
 `find HOME -type f`.split(/\s+/).each do |file|
   canonical_name = file.sub(/^HOME\//, "")
   puts "  checking: #{canonical_name}"

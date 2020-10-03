@@ -43,5 +43,5 @@ sync_secrets:
 
 # copy out or in the current dotfiles
 .PHONY: sync_dotfiles
-sync_dotfiles:
-	./hack/sync_home_dir_files.rb
+sync_dotfiles_%:
+	./hack/sync_home_dir_files.rb $*
