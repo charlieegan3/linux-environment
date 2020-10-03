@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Color Picker
+Comment=Copies to Clipboard
+Keywords=
+Exec=/home/charlieegan3/.local/bin/color-picker
+Terminal=false
+Type=Application
+StartupNotify=true
