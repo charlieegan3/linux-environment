@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Screenshot
+Comment=Whole screen grab
+Exec=/home/charlieegan3/.local/bin/screenshot
+Terminal=false
+Type=Application

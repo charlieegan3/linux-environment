@@ -16,9 +16,13 @@ puts "reviewing files..."
   canonical_name = file.sub(/^HOME\//, "")
   puts "  checking: #{canonical_name}"
 
-  diff = `diff $HOME/#{canonical_name} HOME/#{canonical_name}`
-  if diff != ""
-    puts "    updating"
-    `cp #{source}/#{canonical_name} #{destination}/#{canonical_name}`
+  if File.exists? "#{destination}/#{canonical_name}"
+    diff = `diff #{source}/#{canonical_name} #{destination}/#{canonical_name}`
+    if diff != ""
+      puts "    updating"
+      `cp #{source}/#{canonical_name} #{destination}/#{canonical_name}`
+    end
+  else
+      `cp #{source}/#{canonical_name} #{destination}/#{canonical_name}`
   end
 end

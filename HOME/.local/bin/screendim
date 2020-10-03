@@ -3,18 +3,21 @@
 # always kill running instances
 pkill -f gammastep
 
+echo "<cr> turns off, options: on, or value e.g. 1500"
+read input
+
 # if off, exit early
-if [[ "$1" == "off" ]]; then
+if [[ "$input" == "off" ]]; then
   pkill -f gammastep
   exit
 fi
 
 # if on, use default
-if [[ "$1" == "on" ]]; then
+if [[ "$input" == "on" ]]; then
   eval "gammastep -O 2000" &>/dev/null & disown
 fi
 
 # if other, use as gammastep value
-if [[ ! "$1" == "" ]]; then
-  eval "gammastep -O $1" &>/dev/null & disown
+if [[ ! "$input" == "" ]]; then
+  eval "gammastep -O $input" &>/dev/null & disown
 fi

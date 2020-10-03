@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Screenclip
+Comment=Record whole screen clip
+Exec=/home/charlieegan3/.local/bin/screenclip
+Terminal=false
+Type=Application

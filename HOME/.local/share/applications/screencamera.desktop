@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Screen Camera
+Comment=Record screen to camera device
+Exec=/home/charlieegan3/.local/bin/screencamera
+Terminal=false
+Type=Application

@@ -5,4 +5,3 @@ Keywords=
 Exec=/home/charlieegan3/.local/bin/color-picker
 Terminal=false
 Type=Application
-StartupNotify=true

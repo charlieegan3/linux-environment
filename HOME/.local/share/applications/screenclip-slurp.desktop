@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Screenclip Slurp
+Comment=Record area screenclip
+Exec=/home/charlieegan3/.local/bin/screenclip slurp
+Terminal=false
+Type=Application
