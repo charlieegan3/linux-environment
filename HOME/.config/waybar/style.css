@@ -58,3 +58,14 @@ window#waybar {
   background-color: #ecf0f1;
   color: #2d3436;
 }
+
+#custom-screenshot,
+#custom-screenshot-swappy,
+#custom-screenclip,
+#custom-screenclip-slurp {
+  background-color: black;
+  padding: 0 10px;
+}
+#custom-screenclip.active {
+  background-color: Tomato;
+}

@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Screenshot Annotate
-Comment=Annotate area grab
-Exec=/home/charlieegan3/.local/bin/screenshot swappy slurp
-Terminal=false
-Type=Application

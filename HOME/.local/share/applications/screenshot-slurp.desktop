@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Screenshot Slurp
-Comment=Area grab
-Exec=/home/charlieegan3/.local/bin/screenshot slurp
-Terminal=false
-Type=Application

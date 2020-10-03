@@ -18,6 +18,7 @@ call plug#begin()
   Plug 'roxma/vim-hug-neovim-rpc'
 
   Plug 'mileszs/ack.vim'
+  Plug 'chrisbra/unicode.vim'   " unicode chars
 
   Plug 'Chiel92/vim-autoformat' " opa autoformat
 

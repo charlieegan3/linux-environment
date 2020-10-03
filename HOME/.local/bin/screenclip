@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# if status passed then do that instead
+if [[ "$1" == "status" ]]; then
+  if [[ "$(pgrep wf-recorder)" != "" ]]; then
+    echo '{"text": "🎥", "alt": "recording", "tooltip": "recording", "class": "active" }'
+  else
+    echo '{"text": "🎥", "alt": "not recording", "tooltip": "not recording", "class": "" }'
+  fi
+  exit
+fi
+
 # if stop passed then do that instead
 if [[ "$1" == "stop" ]]; then
   if [[ "$(pgrep wf-recorder)" != "" ]]; then

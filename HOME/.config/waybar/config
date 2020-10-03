@@ -15,7 +15,9 @@
     "memory",
     "temperature",
     "custom/weather",
-    "clock"
+    "clock",
+    "custom/screenshot",
+    "custom/screenclip"
   ],
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -98,8 +100,20 @@
     "exec": "curl wttr.in/?format=\"%C+%t\\n\"",
     "interval": 3600
   },
-  "custom/test": {
-    "exec": "pgrep -l wf-recorder",
-    "interval": 2
+  "custom/screenshot": {
+    "format": "📷",
+    "tooltip-format": "screen shot",
+    "on-click": "screenshot",
+    "on-click-right": "screenshot slurp swappy"
+  },
+  "custom/screenclip": {
+    "format": "🎥",
+    "tooltip-format": "clip",
+    "on-click": "screenclip",
+    "on-click-right": "screenclip slurp",
+    "on-click-middle": "screenclip stop",
+    "exec": "screenclip status",
+    "return-type": "json",
+    "interval": 1
   }
 }
