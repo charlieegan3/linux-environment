@@ -171,7 +171,6 @@ bindsym $mod+Shift+Return exec env MOZ_ENABLE_WAYLAND=1 WAYLAND_DISPLAY=wayland-
 # screenshot
 bindsym Print exec bash -c 'screenshot'
 bindsym $mod+Print exec bash -c 'screenclip stop'
-bindsym $mod+Shift+s exec deswitch
 
 # windows
 bindsym $mod+tab workspace back_and_forth
