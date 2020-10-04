@@ -161,10 +161,6 @@ bar {
     swaybar_command waybar
 }
 
-# audio
-bindsym XF86AudioLowerVolume exec bash -c 'pactl set-sink-volume 0 -5%'
-bindsym XF86AudioRaiseVolume exec bash -c 'pactl set-sink-volume 0 +5%'
-bindsym XF86AudioMute exec bash -c 'pactl set-sink-volume 0 0%'
 # apps
 bindsym $mod+Return exec env WAYLAND_DISPLAY=wayland-0 alacritty
 bindsym $mod+Shift+Return exec env MOZ_ENABLE_WAYLAND=1 WAYLAND_DISPLAY=wayland-0 firefox
