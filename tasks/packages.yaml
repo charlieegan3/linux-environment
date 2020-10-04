@@ -47,7 +47,7 @@
     - perl-Image-ExifTool-12.00
     - pavucontrol-4.0 # volume controller
     - python3-devel-3.8.5 # needed to install nvr
-    - dolpin-20.04.1
+    - dolphin-20.04.1
     - NetworkManager-tui-1.22.16 # called from waybar
     state: latest
   become: yes
