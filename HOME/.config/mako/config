@@ -4,25 +4,9 @@ default-timeout=10000
 markup=1
 actions=1
 
-# Format
-font=Fira Code 10
-border-color=#002028
+font=Roboto 16
+border-color=#111111
 border-size=2
-background-color=#002b36AA
-text-color=#fdf6e3
-format=<b>%s</b> <span color="#93a1a1">(%a)</span>\n%b
-
-[urgency=low]
-text-color=#93a1a1
-
-[urgency=low actionable]
-border-color=#93a1a1
-
-[urgency=normal actionable]
-border-color=#268bd2
-
-[urgency=high]
-border-color=#9c2220
-
-[urgency=high actionable]
-border-color=#6c71c4
+background-color=#ffffff
+text-color=#000000
+format=%s\n<span font="Roboto 13" color="#555555"><b>%a</b></span>\n<span font="Roboto 13" color="#777777">%b</span>

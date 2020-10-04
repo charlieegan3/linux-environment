@@ -8,7 +8,7 @@ raw_handle=WfRecorder
 # find the path of the video device from the module
 device_path="$(v4l2-ctl --list-devices | grep $raw_handle -A 1 | tail -n 1 | tr -d [:space:])"
 if [[ $device_path == "" ]]; then
-        notify-send -t 2000 "virtual camera is missing"
+        notify-send -t 2000 "virtual camera is missing" -a "screencamera"
         >&2 echo "missing camera"
         exit 1
 fi
@@ -26,7 +26,7 @@ fi
 # find users of the device
 users="$(fuser $device_path 2>/dev/null | awk '{for (i=1; i<=NF; i++) print $i}' | xargs -n 1 -I {} ps -p {} -o comm= | paste -s -d",")"
 if [[ "$users" != "" ]]; then
-        notify-send -t 3000 "can't record: $users using camera"
+        notify-send -t 3000 "can't record: $users using camera" -a "screencamera"
         >&2 echo "camera in use"
         exit 1
 fi
@@ -34,7 +34,7 @@ fi
 # check if we have still failed to stop the use of the old device
 format="$(cat /sys/devices/virtual/video4linux/$device_name/format)"
 if [[ $format != "" ]]; then
-        notify-send -t 2000 "virtual camera busy"
+        notify-send -t 2000 "virtual camera busy" -a "screencamera"
         >&2 echo "busy"
         exit 1
 fi
@@ -53,9 +53,9 @@ if [[ "$1" == "slurp" ]]; then
         x="$(echo $data | jq .x)"
         y="$(echo $data | jq .y)"
         echo $data
-        notify-send -t 2000 "Recording Selection to $device_name"
+        notify-send -t 2000 "Recording Selection to $device_name" -a "screencamera"
 else
-        notify-send -t 2000 "Recording Screen to $device_name"
+        notify-send -t 2000 "Recording Screen to $device_name" -a "screencamera"
 fi
 
 # TODO reduce framerate https://github.com/ammen99/wf-recorder/pull/102

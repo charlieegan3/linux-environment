@@ -27,5 +27,5 @@ if [[ "$1" == "swappy" ]] || [[ "$2" == "swappy" ]]; then
   # notify-send -a "" -t 2000 "Screenshot saved"
 else
   grim -g "$x,$y ${width}x$height" $FILENAME
-  notify-send -a "" -t 2000 "Screenshot saved"
+  notify-send -a "screenshot" -t 2000 "Screenshot saved" "$(basename $FILENAME)"
 fi

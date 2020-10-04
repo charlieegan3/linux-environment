@@ -14,15 +14,15 @@ fi
 if [[ "$1" == "stop" ]]; then
   if [[ "$(pgrep wf-recorder)" != "" ]]; then
     pgrep wf-recorder | xargs -n 1 --no-run-if-empty kill -SIGINT
-    notify-send -t 2000 "Recording stopped"
+    notify-send -t 2000 "Recording stopped" -a "screenlip"
   else
-    notify-send -t 2000 "Recording not running"
+    notify-send -t 2000 "Recording not running" -a "screenclip"
   fi
   exit
 fi
 
 if [[ "$(pgrep wf-recorder)" != "" ]]; then
-  notify-send -a charlie -t 2000 "Recording already running"
+  notify-send -a charlie -t 2000 "Recording already running" -a "screenclip"
   exit
 fi
 
@@ -45,9 +45,9 @@ if [[ "$1" == "slurp" ]]; then
         x="$(echo $data | jq .x)"
         y="$(echo $data | jq .y)"
         echo $data
-        notify-send -t 2000 "Recording Selection"
+        notify-send -t 2000 "Recording Selection" -a "screenclip"
 else
-        notify-send -t 2000 "Recording Screen"
+        notify-send -t 2000 "Recording Screen" -a "screenclip"
 fi
 
 wf-recorder -g "$x,$y ${width}x$height" -f $FILENAME
