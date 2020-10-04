@@ -4,3 +4,9 @@
     regexp: '^timestamp_timeout'
     line: 'Defaults timestamp_timeout=30'
   become: yes
+- name: set hostname
+  shell: |
+    if [[ "$(hostname)" != "desktop" ]]; then
+      hostnamectl set-hostname desktop
+    fi
+  become: yes
