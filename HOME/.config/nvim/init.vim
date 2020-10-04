@@ -43,8 +43,9 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/ft_overrides.vim
 source ~/.config/nvim/mappings.vim
 source ~/.config/nvim/autocommands.vim
-" source ~/.config/nvim/highlighting.vim
 if filereadable(expand("~/.vimrc_background"))
   " let base16colorspace=256
   source ~/.vimrc_background
+  " depends on the color scheme value
+  source ~/.config/nvim/highlighting.vim
 endif
