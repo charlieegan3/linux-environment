@@ -1,0 +1,7 @@
+- name: enable use of uinput without sudo for ff night mode automation
+  lineinfile:
+    path: /etc/udev/rules.d/80-uinput.rules
+    regexp: '^KERNEL=="uinput"'
+    line: |
+      KERNEL=="uinput", GROUP="{{ username }}", MODE="0660", OPTIONS+="static_node=uinput"
+    create: true

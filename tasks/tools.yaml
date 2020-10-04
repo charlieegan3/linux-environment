@@ -1,3 +1,13 @@
+- name: install gron
+  shell: "{{ GOROOT }}/bin/go get -u github.com/tomnomnom/gron"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/gron"
+  become_user: "{{ username }}"
+
 - name: install hcloud
   shell: "{{ GOROOT }}/bin/go get -u github.com/hetznercloud/cli/cmd/hcloud"
   environment:

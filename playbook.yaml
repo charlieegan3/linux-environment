@@ -24,6 +24,8 @@
     import_tasks: tasks/flatpaks.yaml
   - name: kernel-modules
     import_tasks: tasks/kernel-modules.yaml
+  - name: sudo permissions
+    import_tasks: tasks/sudo.yaml
   # needs: golang
   - name: tools
     import_tasks: tasks/tools.yaml
