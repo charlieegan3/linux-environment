@@ -17,7 +17,7 @@ packer: install_packer
 	rm -rf $(PACKER_STATUS_FILE)
 	touch head.zip # repo zip, needed to pass packer validation
 	packer validate packer.json
-	GITHUB_SHA=$(GITHUB_SHA) packer build packer.json || true && \
+	GITHUB_SHA=$(GITHUB_SHA) packer build packer.json
 	rm -rf head.zip
 
 # installs packer for CD runner
