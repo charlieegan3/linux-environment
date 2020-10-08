@@ -1,0 +1,7 @@
+- name: install linux-environment repo
+  shell: |
+    git clone https://github.com/charlieegan3/linux-environment /home/{{ username }}/Code/linux-environment
+  args:
+    creates: /home/{{ username }}/Code/linux-environment
+  become: true
+  become_user: "{{ username }}"
