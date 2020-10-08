@@ -12,3 +12,18 @@
   args:
     warn: false
   become: true
+- name: create .ssh folder
+  file:
+    state: directory
+    path: /home/{{ username }}/.ssh
+    mode: "0700"
+  become: yes
+  become_user: "{{ username }}"
+- name: insert my key
+  lineinfile:
+    path: /home/{{ username }}/.ssh/authorized_keys
+    mode: "0600"
+    create: yes
+    line: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCsKmNyBm7iNJQ/W5nrmyzqlRfu//90t8qDyMAPg3RlMDVKYI99yNP3oxZHd0yr+4ZuzssNkq9fj4jhfXJVIqZlnvZJD8Sf69yDmPB1gQAk6pGE3Ee6nO+9kV8nsuowZmg99T9raNbMCN45IFK9LBJ7Mn4zLsShDQ69djvoI2b2Ue906Os2j85kh9EYXBHaVTpKb6+YP56fhgcTr3lfGlYlI3sy1b1ZX8EZUPpiceugpU/jbb7ytzJ00pyx8GYg/umjdRk/vXAPEBmuLduto5iJmaptCCKYMUmJ5/bu5GkLE4JnguXY8M32gnTKsU4olGXHmCQzbiy5gYatPeq2iHYZo/kHsKDdvZxE4zFyK/N7y6Ky4BoeXiHP7nnVhJA+6KkZjhXBDL9do/w4Y0Y3RK3AEmF5DYHh2hDF5jRBSaql/otPI1jzOKiybAQmYJUBuCC63n4NtS8exQmvAAPrBUh1N5HXig9z0vuL41nIA5Y23M2/Tbic3DNJnz6eomxfzmOtqdYexxtEMHtJowJOEeeHYM1d+9lNNdGsCOl02mFLi4I6IKV0dDOSmsQ0pQ9TWSdIwdH+4JB03yDeUAEOsxxyOVoJy2wOItwRt027gCr4LDABiawahPuN6odG7y8bCt5AjWzoYnekUEcS3flMUrpvFx2G0evw4X/OBeRE6idDMQ=="
+  become: yes
+  become_user: "{{ username }}"
