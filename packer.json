@@ -2,14 +2,13 @@
   "variables": {
     "commit_sha": "{{env `GITHUB_SHA`}}",
     "hetzner_token": "{{env `HCLOUD_TOKEN`}}",
-    "packer_status_file": "{{env `PACKER_STATUS_FILE`}}",
     "username": "charlieegan3"
   },
   "builders": [
     {
       "type": "hcloud",
       "server_name": "le-build-{{user `commit_sha`}}",
-      "snapshot_name": "le-build-{{user `commit_sha`}}",
+      "snapshot_name": "le-{{user `commit_sha`}}",
       "token": "{{ user `hetzner_token` }}",
       "image": "fedora-32",
       "location": "nbg1",
@@ -36,10 +35,6 @@
     {
       "type": "shell",
       "script": "scripts/build.sh"
-    },
-    {
-      "type": "shell-local",
-      "command": "bash -c 'touch {{user `packer_status_file`}} && exit 235'"
     }
   ]
 }

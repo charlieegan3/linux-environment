@@ -15,10 +15,9 @@ playbook:
 .PHONY: packer
 packer: install_packer
 	rm -rf $(PACKER_STATUS_FILE)
-	touch head.zip # needed to pass packer validation
+	touch head.zip # repo zip, needed to pass packer validation
 	packer validate packer.json
-	GITHUB_SHA=$(GITHUB_SHA) PACKER_STATUS_FILE=$(PACKER_STATUS_FILE) packer build packer.json || true && \
-	if [[ -f $(PACKER_STATUS_FILE) ]]; then exit 0; else echo "packer failed" && exit 235; fi
+	GITHUB_SHA=$(GITHUB_SHA) packer build packer.json || true && \
 	rm -rf head.zip
 
 # installs packer for CD runner
