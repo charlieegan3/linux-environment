@@ -32,3 +32,5 @@
   # needs: golang, home .config
   - name: vim & terminal
     import_tasks: tasks/vim-term.yaml
+  - name: remote access
+    import_tasks: tasks/remote-access.yaml
