@@ -1,0 +1,22 @@
+name: Checks
+
+on:
+  schedule:
+  - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  assert_no_instances:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Tools
+      run: |
+        make install_hcloud
+    - name: Assert No Instances
+      env:
+        HCLOUD_TOKEN: ${{ secrets.HCLOUD_TOKEN }}
+      run: |
+        ./hack/assert_no_instances.rb

@@ -30,6 +30,13 @@ install_packer:
 	  sudo mv packer /usr/local/bin/packer; \
 	fi
 
+.PHONY: install_hcloud
+install_hcloud:
+	# install hcloud
+	curl -LO https://github.com/hetznercloud/cli/releases/download/v1.19.1/hcloud-linux-amd64.tar.gz
+	tar -xf hcloud-linux-amd64.tar.gz
+	sudo mv hcloud /usr/local/bin/hcloud
+
 # run the commandline firmware update process
 .PHONY: update_fw
 update_fw:
