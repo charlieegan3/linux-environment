@@ -64,3 +64,6 @@ tags
 
 # node
 node_modules
+
+# ruby
+.bundle

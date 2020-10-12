@@ -43,6 +43,7 @@
     - blueman-2.1.3
     - vifm-0.10.1
     - ImageMagick-6.9.11.27
+    - ImageMagick-devel-6.9.11.27
     - perl-Image-ExifTool-12.00
     - pavucontrol-4.0 # volume controller
     - python3-devel-3.8.5 # needed to install nvr
