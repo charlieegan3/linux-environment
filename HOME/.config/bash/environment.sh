@@ -3,6 +3,7 @@
 # these come first since they are used in the setting of the path
 export GOROOT="/usr/lib/golang/"
 export GOPATH="$HOME/Code/go"
+export GOPROXY="https://proxy.golang.org"
 
 export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin"
 export PATH="$GOPATH/bin:$PATH"

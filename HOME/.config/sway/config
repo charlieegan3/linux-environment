@@ -56,7 +56,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Exit sway
-bindsym $mod+Shift+e exec swaynag -t warning -m "Just because it's over doesn't mean it's really over" -b "It's really over" 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m "Just because it's over doesn't mean it's really over" -b "It's really over" 'shutdown -h now'
 #
 # Moving around:
 #
