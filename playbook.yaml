@@ -8,10 +8,8 @@
     GOPATH: /home/charlieegan3/Code/go
     GO111MODULE: "on"
   tasks:
-  - name: home-dir
-    import_tasks: tasks/home-dir.yaml
-  - name: misc admin tasks
-    import_tasks: tasks/misc.yaml
+  - name: home-dir and user
+    import_tasks: tasks/home-dir-user.yaml
   - name: repositories
     import_tasks: tasks/repositories.yaml
   - name: install packages
