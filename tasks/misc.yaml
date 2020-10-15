@@ -4,6 +4,12 @@
     regexp: '^timestamp_timeout'
     line: 'Defaults timestamp_timeout=30'
   become: yes
+- name: set sudo user permissions
+  lineinfile:
+    path: /etc/sudoers
+    regexp: "^{{ username }}"
+    line: "{{ username }} ALL=(ALL)  ALL"
+  become: yes
 - name: set hostname
   shell: |
     if [[ "$(hostname)" != "desktop" ]]; then
