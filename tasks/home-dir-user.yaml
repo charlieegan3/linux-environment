@@ -2,6 +2,13 @@
   user:
     name: "{{ username }}"
 
+- name: set password if needed
+  shell: |
+    if [[ ! "$(sudo cat /etc/shadow | grep {{ username }})" ]]; then
+      echo "password" | passwd --stdin {{ username }};
+    fi
+  become: true
+
 - name: set sudo timeout
   lineinfile:
     path: /etc/sudoers
