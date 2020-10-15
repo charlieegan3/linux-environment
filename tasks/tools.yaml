@@ -111,6 +111,7 @@
 
 - name: install bitwarden cli
   shell: |
+    set -ex
     USERNAME={{ username }}
     TEMP_DIR="$(mktemp -d)"
     cd $TEMP_DIR
