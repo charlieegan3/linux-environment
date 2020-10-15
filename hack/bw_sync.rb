@@ -9,7 +9,6 @@ SECRET_MANIFEST_FILE_REMOTE = "secret_manifest.remote.yaml"
 require "open3"
 require "yaml"
 require "json"
-require "pry"
 require "base64"
 require "pathname"
 
