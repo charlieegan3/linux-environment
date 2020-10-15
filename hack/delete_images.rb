@@ -5,7 +5,7 @@ require "json"
 images = JSON.parse(`hcloud image list -t snapshot -o json`).
   shuffle.
   sort_by { |i| i["created"] }.
-  select { |i| i["description"].start_with? "dev-machine" }.
+  select { |i| i["description"].start_with? "le-" }.
   reverse
 
 if images.size == 0
