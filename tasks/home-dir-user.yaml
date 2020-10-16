@@ -48,6 +48,7 @@
     state: directory
     path: /home/{{ username }}/.ssh
     mode: "0700"
+    owner: "{{ username }}"
   become: yes
   become_user: "{{ username }}"
 
