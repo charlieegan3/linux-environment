@@ -1,57 +1,57 @@
-- name: get kernel version
-  shell: uname -r | cut -d- -f1
-  args:
-    warn: false
-  register: kernel_version
-
 - name: install packages
   dnf:
     name:
+    - ImageMagick-6.9.11.27
+    - ImageMagick-devel-6.9.11.27
+    - NetworkManager-tui-1.22.16 # called from waybar
     - alacritty-0.5.0 # terminal emulator
-    - vim-enhanced-8.2.525
     - automake-1.16.1
-    - chromium # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - blueman-2.1.3
+    - chromium-85.0.4183.121 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - containerd.io-1.3.7
+    - direnv-2.21.2
+    - docker-ce-19.03.13
+    - docker-ce-cli-19.03.13
+    - docker-compose-1.25.4
+    - dolphin-20.04.1
+    - entr-4.6
+    - feh-3.4.1
+    - ffmpeg-4.2.4
+    - fzf-0.22.0
+    - gcc-10.2.1
+    - gimp-2.10.20
+    - golang-1.14.9
     - google-chrome-unstable # needed to run in wayland, e.g. google-chrome-unstable -enable-features=UseOzonePlatform -ozone-platform=wayland
-    - gcc-10.0.1
     - htop-2.2.0
+    - hugo-0.69.0
+    - jq-1.6
     - lshw-B.02.19.2
     - make-1:4.2.1
     - mako-1.4.1 # notification
+    - mosh-1.3.2
+    - mosh-1.3.2 # for access to remotes
+    - neovim-0.4.4
+    - pavucontrol-4.0 # volume controller
+    - perl-Image-ExifTool-12.00
+    - python3-devel-3.8.6 # needed to install nvr
+    - python3-neovim-0.4.1
+    - rclone-1.51.0
+    - ripgrep-12.1.1
+    - ruby-2.7.2
+    - ruby-devel-2.7.2
+    - slurp-1.2.0
+    - swappy-1.2.1
     - sway-1.4
+    - tmux-3.0a
     - ulauncher-5.8.0
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
-    - wf-recorder-0.2.1
+    - vifm-0.11
+    - vim-enhanced-8.2.1805
     - vlc-1:3.0.11.1
-    - ffmpeg-4.2.4
     - waybar-0.9.4
+    - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
-    - tmux-3.0a
-    - direnv-2.21.2
-    - fzf-0.22.0
-    - golang-1.14.9
-    - jq-1.6
-    - mosh-1.3.2
-    - ripgrep-12.1.1
-    - rclone-1.51.0
-    - hugo-0.69.0
-    - entr-4.6
-    - slurp-1.2.0
-    - swappy-1.2.1
-    - feh-3.4.1
-    - gimp-2.10.20
-    - blueman-2.1.3
-    - vifm-0.10.1
-    - ImageMagick-6.9.11.27
-    - ImageMagick-devel-6.9.11.27
-    - perl-Image-ExifTool-12.00
-    - pavucontrol-4.0 # volume controller
-    - python3-devel-3.8.6 # needed to install nvr
-    - dolphin-20.04.1
-    - NetworkManager-tui-1.22.16 # called from waybar
-    - mosh-1.3.2 # for access to remotes
-    - ruby-2.7.1
-    - ruby-devel-2.7.1
     state: latest
   become: yes
 
@@ -61,6 +61,12 @@
     warn: no
     creates: /usr/bin/gammastep
   become: yes
+
+- name: get kernel version
+  shell: uname -r | cut -d- -f1
+  args:
+    warn: false
+  register: kernel_version
 
 - name: install kernel packages if available
   # not available on the cloud VM builder
