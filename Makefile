@@ -8,7 +8,7 @@ playbook:
 	ansible-galaxy collection install -r requirements.yaml
 	# -c makes the connection local
 	# -i sets list of hosts to use
-	ansible-playbook -c local -i hosts playbook.yaml
+	ansible-playbook -v -c local -i hosts playbook.yaml
 
 # targets for GH actions, used to run on the remote instance
 # runs the build on a VM

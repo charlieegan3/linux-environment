@@ -1,4 +1,4 @@
-- name: nvim
+- name: install nvim
   dnf:
     name:
     - neovim-0.4.4
@@ -13,16 +13,22 @@
   args:
     creates: /home/{{ username }}/.local/share}/nvim/site/autoload/plug.vim
 
+- name: own go root
+  file:
+    path: "{{ GOROOT }}"
+    state: directory
+    recurse: yes
+    owner: "{{ username }}"
+
 - name: install plugins
-  shell: |
-    nvim +PlugInstall +qall
-    nvim +UpdateRemotePlugins +qall
-    nvim main.go +GoInstallBinaries +qall
-  environment:
-    GOPATH: "{{ GOPATH }}"
-    GOROOT: "{{ GOROOT }}"
-    GO111MODULE: "{{ GO111MODULE }}"
+  become: yes
   become_user: "{{ username }}"
+  shell: |
+    # https://vi.stackexchange.com/a/15564
+    nvim -E -s -u "$HOME/.config/nvim/init.vim" +PlugInstall +qall
+    nvim -E -s -u "$HOME/.config/nvim/init.vim" +UpdateRemotePlugins +qall
+    # login shell to get go env
+    bash -l -c 'nvim -E -s -u "$HOME/.config/nvim/init.vim" -c ":set ft=go" +GoInstallBinaries +qall'
 
 - name: install alacritty base16
   shell: |
