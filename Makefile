@@ -51,3 +51,8 @@ sync_secrets:
 .PHONY: sync_dotfiles
 sync_dotfiles_%:
 	./hack/sync_home_dir_files.rb $*
+
+# check for updates in installed packages
+.PHONY: check_updates
+check_updates:
+	ruby hack/check_updates.rb
