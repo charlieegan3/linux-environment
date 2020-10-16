@@ -171,6 +171,10 @@ secrets.each do |s|
     if s["permissions"]
       File.chmod(s["permissions"].to_i(8), full_path)
     end
+
+    if s["post_command"]
+      fail unless system(s["post_command"])
+    end
   end
 
   # if the has different content, offer option to overwrite
