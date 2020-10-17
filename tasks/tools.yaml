@@ -6,6 +6,7 @@
     GO111MODULE: "{{ GO111MODULE }}"
   args:
     creates: "{{ GOPATH }}/bin/gron"
+  become: yes
   become_user: "{{ username }}"
 
 - name: install hcloud
@@ -16,6 +17,7 @@
     GO111MODULE: "{{ GO111MODULE }}"
   args:
     creates: "{{ GOPATH }}/bin/hcloud"
+  become: yes
   become_user: "{{ username }}"
 
 - name: install gocode
@@ -26,6 +28,7 @@
     GO111MODULE: "{{ GO111MODULE }}"
   args:
     creates: "{{ GOPATH }}/bin/gocode"
+  become: yes
   become_user: "{{ username }}"
 
 - name: install jb
@@ -36,6 +39,7 @@
     GO111MODULE: "{{ GO111MODULE }}"
   args:
     creates: "{{ GOPATH }}/bin/jb"
+  become: yes
   become_user: "{{ username }}"
 
 - name: install gojsontoyaml
@@ -46,6 +50,7 @@
     GO111MODULE: "{{ GO111MODULE }}"
   args:
     creates: "{{ GOPATH }}/bin/gojsontoyaml"
+  become: yes
   become_user: "{{ username }}"
 
 - name: install tfenv
