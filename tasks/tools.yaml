@@ -1,57 +1,61 @@
-- name: install gron
-  shell: "{{ GOROOT }}/bin/go get -u github.com/tomnomnom/gron"
+- name: install go tools
+  become: yes
+  become_user: "{{ username }}"
+  shell: "{{ GOROOT }}/bin/go get -u {{ item.url }}"
   environment:
     GOPATH: "{{ GOPATH }}"
     GOROOT: "{{ GOROOT }}"
     GO111MODULE: "{{ GO111MODULE }}"
   args:
-    creates: "{{ GOPATH }}/bin/gron"
-  become: yes
-  become_user: "{{ username }}"
-
-- name: install hcloud
-  shell: "{{ GOROOT }}/bin/go get -u github.com/hetznercloud/cli/cmd/hcloud"
-  environment:
-    GOPATH: "{{ GOPATH }}"
-    GOROOT: "{{ GOROOT }}"
-    GO111MODULE: "{{ GO111MODULE }}"
-  args:
-    creates: "{{ GOPATH }}/bin/hcloud"
-  become: yes
-  become_user: "{{ username }}"
-
-- name: install gocode
-  shell: "{{ GOROOT }}/bin/go get -u github.com/visualfc/gocode"
-  environment:
-    GOPATH: "{{ GOPATH }}"
-    GOROOT: "{{ GOROOT }}"
-    GO111MODULE: "{{ GO111MODULE }}"
-  args:
-    creates: "{{ GOPATH }}/bin/gocode"
-  become: yes
-  become_user: "{{ username }}"
-
-- name: install jb
-  shell: "{{ GOROOT }}/bin/go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb"
-  environment:
-    GOPATH: "{{ GOPATH }}"
-    GOROOT: "{{ GOROOT }}"
-    GO111MODULE: "{{ GO111MODULE }}"
-  args:
-    creates: "{{ GOPATH }}/bin/jb"
-  become: yes
-  become_user: "{{ username }}"
-
-- name: install gojsontoyaml
-  shell: "{{ GOROOT }}/bin/go get -u github.com/brancz/gojsontoyaml"
-  environment:
-    GOPATH: "{{ GOPATH }}"
-    GOROOT: "{{ GOROOT }}"
-    GO111MODULE: "{{ GO111MODULE }}"
-  args:
-    creates: "{{ GOPATH }}/bin/gojsontoyaml"
-  become: yes
-  become_user: "{{ username }}"
+    creates: "{{ GOPATH }}/bin/{{ item.name }}"
+  with_items:
+  - url: github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
+    name: jb
+  - url: github.com/brancz/gojsontoyaml
+    name: gojsontoyaml
+  - url: github.com/hetznercloud/cli/cmd/hcloud
+    name: hcloud
+  # go dev tools
+  - url: golang.org/x/tools/cmd/guru
+    name: guru
+  - url: golang.org/x/tools/gopls
+    name: gopls
+  - url: github.com/davidrjenni/reftools/cmd/fillstruct
+    name: fillstruct
+  - url: github.com/rogpeppe/godef
+    name: godef
+  - url: github.com/fatih/motion
+    name: motion
+  - url: github.com/kisielk/errcheck
+    name: errcheck
+  - url: github.com/go-delve/delve/cmd/dlv
+    name: dlv
+  - url: golang.org/x/tools/cmd/gorename
+    name: gorename
+  - url: github.com/koron/iferr
+    name: iferr
+  - url: golang.org/x/lint/golint
+    name: golint
+  - url: github.com/jstemmer/gotags
+    name: gotags
+  - url: github.com/josharian/impl
+    name: impl
+  - url: golang.org/x/tools/cmd/goimports
+    name: goimports
+  - url: github.com/golangci/golangci-lint/cmd/golangci-lint
+    name: golangci-lint
+  - url: github.com/fatih/gomodifytags
+    name: gomodifytags
+  - url: honnef.co/go/tools/cmd/keyify
+    name: keyify
+  - url: honnef.co/go/tools/cmd/staticcheck
+    name: staticcheck
+  - url: github.com/klauspost/asmfmt/cmd/asmfmt
+    name: asmfmt
+  - url: github.com/tomnomnom/gron
+    name: gron
+  - url: github.com/visualfc/gocode
+    name: gocode
 
 - name: install tfenv
   shell: |
