@@ -42,8 +42,6 @@
     name: impl
   - url: golang.org/x/tools/cmd/goimports
     name: goimports
-  - url: github.com/golangci/golangci-lint/cmd/golangci-lint
-    name: golangci-lint
   - url: github.com/fatih/gomodifytags
     name: gomodifytags
   - url: honnef.co/go/tools/cmd/keyify
@@ -56,6 +54,13 @@
     name: gron
   - url: github.com/visualfc/gocode
     name: gocode
+
+- name: install golangci-lint
+  shell: |
+    # go get install is not offically supported
+    curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.31.0
+  args:
+    creates: "{{ GOPATH }}/bin/golangci-lint"
 
 - name: install tfenv
   shell: |
