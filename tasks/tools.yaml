@@ -82,7 +82,7 @@
     creates: /home/{{ username }}/.local/bin/packer
     warn: false
 
-- name: install packer
+- name: install vault
   shell: |
     curl -LO https://releases.hashicorp.com/vault/1.4.0/vault_1.4.0_linux_amd64.zip
     unzip vault*.zip
@@ -90,6 +90,15 @@
     rm vault*.zip
   args:
     creates: /home/{{ username }}/.local/bin/vault
+    warn: false
+
+- name: install stern
+  shell: |
+    curl -LO https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64
+    chmod +x stern_linux_amd64
+    sudo mv stern_linux_amd64 /home/{{ username }}/.local/bin/stern
+  args:
+    creates: /home/{{ username }}/.local/bin/stern
     warn: false
 
 - name: install kubectl, kubens, kubectx
