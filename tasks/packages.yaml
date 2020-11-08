@@ -44,7 +44,7 @@
     - swappy-1.2.1
     - sway-1.4
     - tmux-3.0a
-    - ulauncher-5.8.0
+    - ulauncher-5.8.1
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
     - vifm-0.11
