@@ -6,8 +6,8 @@
     - NetworkManager-tui-1.22.16 # called from waybar
     - alacritty-0.5.0 # terminal emulator
     - automake-1.16.1
-    - blueman-2.1.3
-    - chromium-85.0.4183.121 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - blueman-2.1.4
+    - chromium-86.0.4240.111 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.3.7
     - direnv-2.21.2
@@ -54,6 +54,7 @@
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
+    - youtube-dl-2020.09.20
     state: latest
   become: yes
 
