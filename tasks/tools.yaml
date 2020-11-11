@@ -11,6 +11,8 @@
   with_items:
   - url: github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
     name: jb
+  - url: github.com/ChimeraCoder/gojson/gojson
+    name: gojson
   - url: github.com/brancz/gojsontoyaml
     name: gojsontoyaml
   - url: github.com/hetznercloud/cli/cmd/hcloud
