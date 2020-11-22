@@ -14,7 +14,7 @@
     - docker-ce-19.03.13
     - docker-ce-cli-19.03.13
     - docker-compose-1.25.4
-    - dolphin-20.04.1
+    - dolphin-20.08.1
     - entr-4.6
     - feh-3.4.1
     - ffmpeg-4.2.4
