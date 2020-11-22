@@ -14,11 +14,11 @@
     - docker-ce-19.03.13
     - docker-ce-cli-19.03.13
     - docker-compose-1.25.4
-    - dolphin-20.08.1
+    - dolphin-20.08.3
     - entr-4.6
     - feh-3.4.1
     - ffmpeg-4.2.4
-    - fzf-0.24.1
+    - fzf-0.24.3
     - gcc-10.2.1
     - gimp-2.10.22
     - golang-1.14.10
