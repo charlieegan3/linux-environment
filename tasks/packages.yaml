@@ -59,7 +59,7 @@
   become: yes
 
 - name: install gammastep
-  command: dnf --disablerepo=* --enablerepo=rawhide --releasever=34 install -y gammastep-2.0.2
+  command: dnf --disablerepo=* --enablerepo=rawhide --releasever=34 install -y gammastep-2.0.5
   args:
     warn: no
     creates: /usr/bin/gammastep
