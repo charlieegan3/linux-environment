@@ -7,7 +7,7 @@
     - alacritty-0.5.0 # terminal emulator
     - automake-1.16.1
     - blueman-2.1.4
-    - chromium-86.0.4240.111 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - chromium-87.0.4280.66 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.3.7
     - direnv-2.21.2
@@ -44,7 +44,7 @@
     - swappy-1.2.1
     - sway-1.4
     - tmux-3.0a
-    - ulauncher-5.8.1
+    - ulauncher-5.9.0
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
     - vifm-0.11
