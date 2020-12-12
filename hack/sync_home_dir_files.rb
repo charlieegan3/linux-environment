@@ -15,6 +15,9 @@ if ARGV[0] == "export"
   source, destination = destination, source
 end
 
+puts "sync #{source} to #{destination}?"
+STDIN.gets
+
 `find HOME -type f`.split(/\s+/).each do |file|
   canonical_name = file.sub(/^HOME\//, "")
   puts "  checking: #{canonical_name}"
