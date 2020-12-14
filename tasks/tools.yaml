@@ -192,3 +192,9 @@
     pip install --user alacritty-colorscheme
   args:
     creates: /home/{{ username }}/.local/bin/alacritty-colorscheme
+
+- name: install beancount
+  shell: |
+    pip3 install --user beancount
+  args:
+    creates: /home/{{ username }}/.local/bin/nvr
