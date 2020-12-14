@@ -18,7 +18,9 @@
     - entr-4.6
     - feh-3.4.1
     - ffmpeg-4.2.4
+    - flatpak-1.8.3 # not always installed by default on Fedora Workstation even though it is meant to be
     - fzf-0.24.3
+    - gammastep-2.0.5
     - gcc-10.2.1
     - gimp-2.10.22
     - golang-1.14.10
@@ -54,15 +56,8 @@
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
-    - youtube-dl-2020.11.12
+    - youtube-dl-2020.12.02
     state: latest
-  become: yes
-
-- name: install gammastep
-  command: dnf --disablerepo=* --enablerepo=rawhide --releasever=34 install -y gammastep-2.0.5
-  args:
-    warn: no
-    creates: /usr/bin/gammastep
   become: yes
 
 - name: get kernel version

@@ -23,9 +23,9 @@
 - name: remove gnome and libreoffice groups
   shell: |
     if [[ "$(dnf grouplist --installed | grep GNOME)" ]]; then
-      dnf groupremove -r GNOME
+      dnf groupremove GNOME
     fi
     if [[ "$(dnf grouplist --installed | grep LibreOffice)" ]]; then
-      dnf groupremove -r LibreOffice
+      dnf groupremove LibreOffice
     fi
   become: true
