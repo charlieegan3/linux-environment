@@ -186,15 +186,21 @@
     pip3 install --user neovim-remote
   args:
     creates: /home/{{ username }}/.local/bin/nvr
+  become: yes
+  become_user: "{{ username }}"
 
 - name: install alacritty-colorscheme
   shell: |
     pip install --user alacritty-colorscheme
   args:
     creates: /home/{{ username }}/.local/bin/alacritty-colorscheme
+  become: yes
+  become_user: "{{ username }}"
 
 - name: install beancount
   shell: |
     pip3 install --user beancount
   args:
-    creates: /home/{{ username }}/.local/bin/nvr
+    creates: /home/{{ username }}/.local/bin/bean-check
+  become: yes
+  become_user: "{{ username }}"
