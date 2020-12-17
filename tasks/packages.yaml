@@ -23,7 +23,7 @@
     - gammastep-2.0.5
     - gcc-10.2.1
     - gimp-2.10.22
-    - golang-1.14.10
+    - golang-1.14.13
     - google-chrome-unstable # needed to run in wayland, e.g. google-chrome-unstable -enable-features=UseOzonePlatform -ozone-platform=wayland
     - htop-2.2.0
     - hugo-0.69.0
