@@ -10,11 +10,13 @@
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio",
+    "backlight",
     "network",
     "cpu",
     "memory",
     "temperature",
     "custom/weather",
+    "battery",
     "clock",
     "custom/screenshot",
     "custom/screenclip",
@@ -23,6 +25,11 @@
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%Y-%m-%d %H:%M}"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "on-scroll-down": "bash -c 'current=$(light -G); if (( $(echo \"$current > 10\"|bc -l) )); then light -U 1; fi'",
+    "on-scroll-up": "light -A 0.5"
   },
   "idle_inhibitor": {
     "format": "{icon}",

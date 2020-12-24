@@ -28,6 +28,7 @@
     - htop-2.2.0
     - hugo-0.69.0
     - jq-1.6
+    - light-1.2.2
     - lshw-B.02.19.2
     - make-1:4.2.1
     - mako-1.4.1 # notification
