@@ -20,8 +20,6 @@
   # go dev tools
   - url: golang.org/x/tools/cmd/guru
     name: guru
-  - url: golang.org/x/tools/gopls
-    name: gopls
   - url: github.com/davidrjenni/reftools/cmd/fillstruct
     name: fillstruct
   - url: github.com/rogpeppe/godef
@@ -56,6 +54,19 @@
     name: gron
   - url: github.com/visualfc/gocode
     name: gocode
+
+- name: install gopls
+  become: yes
+  become_user: "{{ username }}"
+  # should not be run with -u flag
+  # https://go.googlesource.com/tools/+/refs/heads/master/gopls/doc/user.md#installation
+  shell: "{{ GOROOT }}/bin/go get golang.org/x/tools/gopls"
+  environment:
+    GOPATH: "{{ GOPATH }}"
+    GOROOT: "{{ GOROOT }}"
+    GO111MODULE: "{{ GO111MODULE }}"
+  args:
+    creates: "{{ GOPATH }}/bin/gopls"
 
 - name: install golangci-lint
   shell: |
