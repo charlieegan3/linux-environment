@@ -51,7 +51,7 @@
     - v4l2loopback-0.12.5 # screen recorder plugin
     - v4l2loopback-dkms-0.12.5 # screen recorder kernel module
     - vifm-0.11
-    - vim-enhanced-8.2.2018
+    - vim-enhanced-8.2.2146
     - vlc-3.0.12
     - waybar-0.9.4
     - wdiff-1.2.2 # word diff
