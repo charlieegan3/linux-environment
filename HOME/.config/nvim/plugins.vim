@@ -22,8 +22,6 @@ call plug#begin()
   Plug 'mileszs/ack.vim'
   Plug 'chrisbra/unicode.vim'   " unicode chars
 
-  Plug 'Chiel92/vim-autoformat' " opa autoformat
-
   Plug 'ap/vim-buftabline'      " tabs for open buffers
   Plug 'qpkorr/vim-renamer'     " bulk renaming
   Plug 'danro/rename.vim'       " adds the :Rename file command
@@ -40,10 +38,17 @@ call plug#begin()
 
   Plug 'sedm0784/vim-you-autocorrect' " smartphone-like lazy correction
 
+  Plug 'dense-analysis/ale'
+
   " language plugins
   Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
   Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-  Plug 'dense-analysis/ale', { 'for': 'go' } " only used in go
+
+  Plug 'pangloss/vim-javascript'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'peitalin/vim-jsx-typescript'
+
+  Plug 'Chiel92/vim-autoformat' " opa autoformat
 
   Plug 'avakhov/vim-yaml', { 'for': 'yaml' }
   Plug 'pearofducks/ansible-vim', { 'for': 'yaml' }
@@ -54,13 +59,15 @@ call plug#begin()
   Plug 'tpope/vim-haml', { 'for': 'haml' }
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'alvan/vim-closetag', { 'for': ['html', 'eruby'] }
+  Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
+
+  Plug 'posva/vim-vue', { 'for': 'vue' }
+  Plug 'leafgarland/typescript-vim', { 'for': ['ts', 'tsx'] }
+  Plug 'peitalin/vim-jsx-typescript', { 'for': ['jsx', 'tsx'] }
 
   Plug 'idris-hackers/idris-vim', { 'for': ['idris'] }
 
   Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-
-  Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
-  Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 
   Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 
@@ -73,7 +80,6 @@ call plug#begin()
   Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
   Plug 'tsandall/vim-rego', { 'for': 'rego' }
-  Plug 'posva/vim-vue', { 'for': 'vue' }
 
   Plug 'google/vim-jsonnet', { 'for': 'jsonnet' }
 call plug#end()
