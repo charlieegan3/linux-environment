@@ -61,6 +61,13 @@
     state: latest
   become: yes
 
+- name: install nodejs
+  shell: |
+    if [[ ! "$(dnf module list --installed | grep nodejs)" ]]; then
+      dnf module install -y nodejs:14/default
+    fi
+  become: true
+
 - name: get kernel version
   shell: uname -r | cut -d- -f1
   args:
