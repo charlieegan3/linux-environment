@@ -7,7 +7,7 @@
     - alacritty-0.6.0 # terminal emulator
     - automake-1.16.1
     - blueman-2.1.4
-    - chromium-87.0.4280.88 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - chromium-87.0.4280.141 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.3.7
     - direnv-2.21.2
@@ -37,7 +37,7 @@
     - neovim-0.4.4
     - pavucontrol-4.0 # volume controller
     - perl-Image-ExifTool-12.00
-    - python3-devel-3.8.6 # needed to install nvr
+    - python3-devel-3.8.7 # needed to install nvr
     - python3-neovim-0.4.1
     - rclone-1.51.0
     - ripgrep-12.1.1
