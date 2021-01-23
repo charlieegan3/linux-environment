@@ -18,7 +18,7 @@
     - entr-4.6
     - feh-3.4.1
     - ffmpeg-4.2.4
-    - flatpak-1.8.3 # not always installed by default on Fedora Workstation even though it is meant to be
+    - flatpak-1.8.5 # not always installed by default on Fedora Workstation even though it is meant to be
     - fzf-0.25.0
     - gammastep-2.0.6
     - gcc-10.2.1
@@ -53,7 +53,7 @@
     - vifm-0.11
     - vim-enhanced-8.2.2146
     - vlc-3.0.12
-    - waybar-0.9.4
+    - waybar-0.9.5
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
