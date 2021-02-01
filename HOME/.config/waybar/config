@@ -8,6 +8,7 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "custom/soundout",
     "idle_inhibitor",
     "pulseaudio",
     "backlight",
@@ -129,5 +130,8 @@
     "exec": "nightmode status",
     "return-type": "json",
     "interval": 1
+  },
+  "custom/soundout": {
+    "exec": "soundout"
   }
 }

@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+data = `pactl list sinks`
+
+data = data.split(/^Sink \#\d+\n/)
+
+sinks = {}
+
+data.each do |sink|
+  sink = sink.split("\n").map { |l| l.sub(/^\s+/, "") }.join("\n")
+
+  state = sink.scan(/^State: (\w*)/).first
+  desc = sink.scan(/^Description: (.*)/).first
+
+  if state.nil? || desc.nil?
+    next
+  end
+
+  sinks[desc.first] = state.first
+end
+
+running_sink = "Unknown"
+sinks.each do |k, v|
+  if v == "RUNNING"
+    running_sink = k
+  end
+end
+
+puts running_sink
