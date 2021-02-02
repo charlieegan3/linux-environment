@@ -16,12 +16,6 @@ nnoremap <SPACE> :up \| :FZF<cr>
 " quit vim
 nnoremap <leader>q :silent exec "wa" \| silent exec "qall"<cr>
 
-" save file
-nnoremap <leader>s :only \|:w<cr>
-
-" write and close buffer
-nnoremap <leader>w :only \| up \| bd!<cr>
-
 " delete current file
 nnoremap <leader>dd :call delete(expand('%')) \| bdelete!<cr>
 
