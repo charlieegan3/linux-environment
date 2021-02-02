@@ -8,7 +8,8 @@
   ],
   "modules-center": [],
   "modules-right": [
-    "custom/soundout",
+    "custom/speakers",
+    "custom/mics",
     "idle_inhibitor",
     "pulseaudio",
     "backlight",
@@ -131,7 +132,12 @@
     "return-type": "json",
     "interval": 1
   },
-  "custom/soundout": {
-    "exec": "soundout"
+  "custom/speakers": {
+    "exec": "sounddev speakers",
+    "interval": 1
+  },
+  "custom/mics": {
+    "exec": "sounddev mics",
+    "interval": 1
   }
 }

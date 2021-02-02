@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+mode = "sources"
+if ARGV[0] == "speakers"
+  mode = "sinks"
+elsif ARGV[0] == "mics"
+  mode = "sources"
+else
+  puts "unknown mode"
+  exit
+end
+
+data = `pactl list #{mode}`
+
+data = data.split(/^(Sink|Source) \#\d+\n/)
+
+devices = {}
+
+data.each do |dev|
+  dev = dev.split("\n").map { |l| l.sub(/^\s+/, "") }.join("\n")
+
+  state = dev.scan(/^State: (\w*)/).first
+  desc = dev.scan(/^Description: (.*)/).first
+
+  if state.nil? || desc.nil?
+    next
+  end
+
+  devices[desc.first] = state.first
+end
+
+running_device = "Unknown"
+devices.each do |k, v|
+  if v == "RUNNING"
+    running_device = k
+  end
+end
+
+puts running_device
