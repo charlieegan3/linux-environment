@@ -8,6 +8,7 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "custom/cameracheck",
     "custom/speakers",
     "custom/mics",
     "idle_inhibitor",
@@ -139,5 +140,12 @@
   "custom/mics": {
     "exec": "sounddev mics",
     "interval": 1
+  },
+  "custom/cameracheck": {
+    "format": "📷",
+    "tooltip-format": "camera check",
+    "exec": "cameracheck",
+    "return-type": "json",
+    "interval": 10
   }
 }

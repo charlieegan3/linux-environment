@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+device=$(v4l2-ctl --list-devices | grep 'USB Video' -A 1 | tail -n 1 | xargs)
+
+if [ -z "$device" ]; then
+  echo '{"text": "📷", "class": "missing", "alt": "", "tooltip": "" }'
+fi
+
+use=$(fuser $device)
+if [ -z "$use" ]
+then
+  temp_dir=$(mktemp -d)
+
+  nohup ffmpeg -video_size 640x360 -framerate 5 -t 00:00:03 -i "$device" "$temp_dir/clip.mp4" &> $temp_dir/logs
+
+  while [ ! -f "$temp_dir/clip.mp4" ]; do sleep 1; done
+
+  nohup ffmpeg -sseof -3 -i "$temp_dir/clip.mp4" -update 1 -q:v 1 "$temp_dir/last.jpg" &> $temp_dir/logs
+
+  while [ ! -f "$temp_dir/last.jpg" ]; do sleep 1; done
+
+  colors=$(identify -format %k $temp_dir/last.jpg)
+  if [ "$colors" = "1" ]; then
+    # camera is off
+    echo '{"text": "📷", "class": "", "alt": "", "tooltip": "" }'
+  else
+    echo '{"text": "📷", "class": "active", "alt": "", "tooltip": "" }'
+  fi
+
+  rm -r $temp_dir
+else
+  echo '{"text": "📷", "class": "active", "alt": "", "tooltip": "" }'
+fi

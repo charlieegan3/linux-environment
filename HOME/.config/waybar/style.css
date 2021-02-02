@@ -70,3 +70,13 @@ window#waybar {
 #custom-screenclip.active {
   background-color: Tomato;
 }
+
+#custom-cameracheck {
+  padding: 0 10px;
+}
+#custom-cameracheck.active {
+  background-color: Tomato;
+}
+#custom-cameracheck.missing {
+  background-color: CornflowerBlue;
+}
