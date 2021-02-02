@@ -7,7 +7,7 @@
     - alacritty-0.6.0 # terminal emulator
     - automake-1.16.1
     - blueman-2.1.4
-    - chromium-87.0.4280.141 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - chromium-88.0.4324.96 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.3.7
     - direnv-2.21.2
@@ -20,7 +20,7 @@
     - ffmpeg-4.2.4
     - flatpak-1.8.5 # not always installed by default on Fedora Workstation even though it is meant to be
     - fzf-0.25.0
-    - gammastep-2.0.6
+    - gammastep-2.0.7
     - gcc-10.2.1
     - gimp-2.10.22
     - golang-1.14.13
@@ -36,7 +36,7 @@
     - mosh-1.3.2 # for access to remotes
     - neovim-0.4.4
     - pavucontrol-4.0 # volume controller
-    - perl-Image-ExifTool-12.00
+    - perl-Image-ExifTool-12.16
     - python3-devel-3.8.7 # needed to install nvr
     - python3-neovim-0.4.1
     - rclone-1.51.0
@@ -57,7 +57,7 @@
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
-    - youtube-dl-2021.01.03
+    - youtube-dl-2021.01.16
     state: latest
   become: yes
 
