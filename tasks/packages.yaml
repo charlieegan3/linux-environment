@@ -16,7 +16,7 @@
     - docker-compose-1.25.4
     - dolphin-20.08.3
     - entr-4.6
-    - feh-3.4.1
+    - feh-3.6.3
     - ffmpeg-4.2.4
     - flatpak-1.8.5 # not always installed by default on Fedora Workstation even though it is meant to be
     - fzf-0.25.0
@@ -57,7 +57,7 @@
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
-    - youtube-dl-2021.01.16
+    - youtube-dl-2021.01.24.1
     state: latest
   become: yes
 
