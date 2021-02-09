@@ -215,3 +215,9 @@
     creates: /home/{{ username }}/.local/bin/bean-check
   become: yes
   become_user: "{{ username }}"
+
+- name: install rust
+  shell: |
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  args:
+    creates: /home/{{ username }}/.cargo
