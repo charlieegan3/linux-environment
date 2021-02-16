@@ -44,6 +44,8 @@ call plug#begin()
   Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
   Plug 'nsf/gocode', { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
+  Plug 'rust-lang/rust.vim'
+
   Plug 'pangloss/vim-javascript'
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
