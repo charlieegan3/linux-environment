@@ -37,7 +37,7 @@
     - neovim-0.4.4
     - pavucontrol-4.0 # volume controller
     - perl-Image-ExifTool-12.16
-    - python3-devel-3.8.7 # needed to install nvr
+    - python3-devel-3.8.9 # needed to install nvr
     - python3-neovim-0.4.1
     - rclone-1.51.0
     - ripgrep-12.1.1
