@@ -10,7 +10,7 @@
       "server_name": "le-build-{{user `commit_sha`}}",
       "snapshot_name": "le-{{user `commit_sha`}}",
       "token": "{{ user `hetzner_token` }}",
-      "image": "fedora-32",
+      "image": "fedora-34",
       "location": "nbg1",
       "server_type": "cpx21",
       "ssh_username": "root"

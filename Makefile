@@ -25,7 +25,7 @@ packer: install_packer
 install_packer:
 	if ! hash packer; then \
 	  cd $$(mktemp -d) && \
-	  curl -LO https://releases.hashicorp.com/packer/1.5.5/packer_1.5.5_linux_amd64.zip && \
+	  curl -LO https://releases.hashicorp.com/packer/1.7.2/packer_1.7.2_linux_amd64.zip && \
 	  unzip *.zip && \
 	  sudo mv packer /usr/local/bin/packer; \
 	fi
