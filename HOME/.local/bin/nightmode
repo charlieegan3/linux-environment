@@ -39,16 +39,6 @@ if [[ "$1" == "toggle" ]]; then
     nvr --nostart --serverlist | sort | uniq | xargs -n 1 nvr --nostart -cc "so $NVIM_CONFIG_PATH" --servername
   fi
 
-  # toggle the browser using dark reader shortcut, hackkkkk
-  current_con_id=$(swaymsg -t get_tree | jq '.. | (.nodes? // empty)[] | select(.focused==true) | .id')
-  ff_pids=$(swaymsg -t get_tree | jq '.nodes | .[] | .nodes | .[] | select(.nodes != null) | .nodes | .[] | select(.app_id == "firefox") | .id')
-
-  if [[ $ff_pids != "" ]]; then
-    sway [app_id="firefox"] focus
-    ydotool key --delay 100 'alt+shift+d'
-    sway [con_id="$current_con_id"] focus
-  fi
-
   exit
 fi
 
