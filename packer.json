@@ -13,7 +13,11 @@
       "image": "fedora-34",
       "location": "nbg1",
       "server_type": "cpx21",
-      "ssh_username": "root"
+      "ssh_username": "root",
+      "ssh_keys": [
+        "git@charlieegan3.com"
+      ],
+      "user_data": "#!/usr/bin/env bash\n\nupdate-crypto-policies --set LEGACY && systemctl restart sshd.service"
     }
   ],
   "provisioners": [
