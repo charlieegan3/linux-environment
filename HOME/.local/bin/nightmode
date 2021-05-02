@@ -28,10 +28,10 @@ if [[ "$1" == "toggle" ]]; then
   if $night_mode_on; then
     # disable tint
     pkill -f gammastep || true
-    alacritty-colorscheme -C $COLOR_DIR -a $LIGHT_COLOR -V
+    alacritty-colorscheme -C $COLOR_DIR apply $LIGHT_COLOR
   else
     eval "gammastep -O 2000" &>/dev/null & disown
-    alacritty-colorscheme -C $COLOR_DIR -a $DARK_COLOR -V
+    alacritty-colorscheme -C $COLOR_DIR apply $DARK_COLOR
   fi
 
   # if nvim is running, reload
