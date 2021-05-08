@@ -5,7 +5,6 @@
     copr_repository: "{{ item }}"
   with_items:
   - pschyska/alacritty
-  - sentry/v4l2loopback
 
 - name: get fedora version
   shell: rpm -E %fedora
