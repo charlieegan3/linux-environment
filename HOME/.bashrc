@@ -25,9 +25,9 @@ export PS1="$COLOR_YELLOW\$(last_status_string)$COLOR_CYAN\$(relative_path_to_gi
 
 # if running from tty1 start sway
 if [[ "$(tty)" == "/dev/tty1" ]]; then
-    # https://github.com/systemd/systemd/issues/14489
-    export XDG_SESSION_TYPE=wayland
-    exec systemd-cat -t sway sway
+  # https://github.com/systemd/systemd/issues/14489
+  export XDG_SESSION_TYPE=wayland
+  exec systemd-cat -t sway sway
 fi
 
 # welcome
