@@ -171,8 +171,8 @@ bar {
 }
 
 # apps
-bindsym $mod+Return exec env WAYLAND_DISPLAY=wayland-0 alacritty
-bindsym $mod+Shift+Return exec env MOZ_ENABLE_WAYLAND=1 WAYLAND_DISPLAY=wayland-0 firefox
+bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec env MOZ_ENABLE_WAYLAND=1 firefox
 # screenshot
 bindsym Print exec bash -c 'screenshot'
 bindsym $mod+Print exec bash -c 'screenclip stop'
