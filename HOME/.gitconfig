@@ -8,7 +8,7 @@
 [transfer]
   fsckobjects = true
 [push]
-  default = simple
+  default = current
 [color]
   ui = auto
 [color "status"]
@@ -38,3 +38,5 @@
   fsckobjects = false
 [credential]
   helper = store
+[branch]
+	autosetupmerge = always
