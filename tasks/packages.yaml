@@ -4,22 +4,22 @@
     - ImageMagick-6.9.11.27
     - ImageMagick-devel-6.9.11.27
     - NetworkManager-tui-1.30.4 # called from waybar
-    - alacritty-0.6.0 # terminal emulator
+    - alacritty-0.8.0 # terminal emulator
     - automake-1.16.2
-    - blueman-2.1.4
-    - chromium-89.0.4389.90 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - blueman-2.2.1
+    - chromium-90.0.4430.212 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.4.4
     - direnv-2.27.0
-    - docker-ce-20.10.6
-    - docker-ce-cli-20.10.6
+    - docker-ce-20.10.7
+    - docker-ce-cli-20.10.7
     - docker-compose-1.28.6
-    - dolphin-20.12.2
-    - entr-4.8
+    - dolphin-21.04.1
+    - entr-4.9
     - feh-3.6.3
     - ffmpeg-4.4
     - flatpak-1.10.2 # not always installed by default on Fedora Workstation even though it is meant to be
-    - fzf-0.26.0
+    - fzf-0.27.2
     - gammastep-2.0.7
     - gcc-11.1.1
     - gimp-2.10.24
@@ -30,7 +30,7 @@
     - light-1.2.2
     - lshw-B.02.19.2
     - make-1:4.3
-    - mako-1.4.1 # notification
+    - mako-1.5 # notification
     - mosh-1.3.2
     - mosh-1.3.2 # for access to remotes
     - neovim-0.4.4
@@ -46,15 +46,15 @@
     - swappy-1.3.1
     - sway-1.6
     - tmux-3.1c
-    - ulauncher-5.10.0
+    - ulauncher-5.11.0
     - vifm-0.11
-    - vim-enhanced-8.2.2879
-    - vlc-1:3.0.12.1
-    - waybar-0.9.5
+    - vim-enhanced-8.2.2956
+    - vlc-1:3.0.15
+    - waybar-0.9.7
     - wdiff-1.2.2 # word diff
     - wf-recorder-0.2.1
     - wl-clipboard-2.0.0
-    - youtube-dl-2021.05.16
+    - youtube-dl-2021.06.06
     state: latest
   become: yes
 
