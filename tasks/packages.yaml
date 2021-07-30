@@ -3,11 +3,11 @@
     name:
     - ImageMagick-6.9.11.27
     - ImageMagick-devel-6.9.11.27
-    - NetworkManager-tui-1.30.4 # called from waybar
+    - NetworkManager-tui-1.30.6 # called from waybar
     - alacritty-0.8.0 # terminal emulator
     - automake-1.16.2
     - blueman-2.2.1
-    - chromium-91.0.4472.114 # set chrome://flags/#enable-webrtc-pipewire-capturer
+    - chromium-91.0.4472.164 # set chrome://flags/#enable-webrtc-pipewire-capturer
     - colordiff-1.0.19
     - containerd.io-1.4.4
     - direnv-2.27.0
@@ -23,14 +23,14 @@
     - gammastep-2.0.7
     - gcc-11.1.1
     - gimp-2.10.24
-    - golang-1.16.5
+    - golang-1.16.6
     - htop-3.0.5
     - hugo-0.80.0
     - jq-1.6
     - light-1.2.2
     - lshw-B.02.19.2
     - make-1:4.3
-    - mako-1.5 # notification
+    - mako-1.6 # notification
     - mosh-1.3.2
     - mosh-1.3.2 # for access to remotes
     - neovim-0.4.4
@@ -48,7 +48,7 @@
     - tmux-3.1c
     - ulauncher-5.11.0
     - vifm-0.11
-    - vim-enhanced-8.2.3154
+    - vim-enhanced-8.2.3223
     - vlc-1:3.0.16
     - waybar-0.9.7
     - wdiff-1.2.2 # word diff
